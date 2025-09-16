@@ -16,4 +16,4 @@ function function2() {
 funcion1();
 function2();
 
-console.log(heigth + "," + weigth); 
+console.log(heigth + "," + weigth);  
