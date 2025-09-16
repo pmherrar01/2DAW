@@ -1,7 +1,19 @@
-let weigth = 100;
+let weigth;
+let heigth
+
 function funcion1() {
-    let heigth = 20;
-    console.log(weigth + heigth);
+
+    heigth = prompt("heigth:");
+
 }
 
-console.log(weigth + length);
+function function2() {
+
+    weigth = prompt("weigth:");
+
+}
+
+funcion1();
+function2();
+
+console.log(heigth + "," + weigth); 
