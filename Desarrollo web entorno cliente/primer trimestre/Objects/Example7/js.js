@@ -19,11 +19,23 @@ let library2 = [
 function mostrarArray(mensaje , aLibros) {
     console.log(mensaje);
     
-    for (let i = 1; i < aLibros.length; i++) {
+    for (let i = 0; i < aLibros.length; i++) {
         
         console.log(`book ${i} \n Title: ${aLibros[i].title}, author:  ${aLibros[i].author}, pages: ${aLibros[i].numPages}`)
         
     }
+}
+
+function countPages(aLibros) {
+    let count = 0;
+
+    for (let i = 0; i < aLibros.length; i++) {
+
+        count = count + aLibros[i].numPages;
+        
+    }
+
+    return count;
 }
 
 let book = {
@@ -32,8 +44,10 @@ let book = {
       numPages : 254
 }
 
-mostrarArray("Sin añadir libro", library2);
-
 library2.push(book);
 
-mostrarArray("Añadiendo libro", library2)
+mostrarArray("", library2)
+
+let total = countPages(library2);
+
+console.log(`sum of the pages: ${total}`);
