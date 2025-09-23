@@ -16,6 +16,18 @@ let library2 = [
     }
 ];
 
+function mostrarArray(mensaje , aLibros) {
+    console.log(mensaje);
+    
+    for (let i = 1; i < aLibros.length; i++) {
+        
+        console.log(`book ${i} \n Title: ${aLibros[i].title}, author:  ${aLibros[i].author}, pages: ${aLibros[i].numPages}`)
+        
+    }
+}
+
+mostrarArray("sin añadir libro", library2);
+
 library2.push({title: "Learning JavaScript Design Patterns", author : "Addy Osmani", numPages : 254});
 
-console.log(`length: ${library2.length}, books name: \n  book 1: ${library2[0].title} \n  book 2: ${library2[1].title} \n  book 3: ${library2[2].title} \n  book 4: ${library2[3].title}` )
+mostrarArray("Añadiendo libro", library2)
