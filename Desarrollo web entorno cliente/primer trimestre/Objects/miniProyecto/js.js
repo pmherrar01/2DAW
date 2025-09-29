@@ -21,12 +21,12 @@ let prenda3 = {
 
 let aStock = [];
 
+aStock.push(prenda1);
+aStock.push(prenda2);
+aStock.push(prenda3);
+
+
 function anadirPrenda() {
-
-    aStock.push(prenda1);
-    aStock.push(prenda2);
-    aStock.push(prenda3);
-
     console.log(aStock)
 
     let prendaNueva = datosPrenda(document.getElementById("tipodePrenda").value, document.getElementById("precio").value, document.getElementById("fechaSalida").value, document.querySelector('input[name="tara"]:checked').value === "true");
