@@ -1,11 +1,12 @@
 function comprobarNum() {
-  let op1 = document.getElementById("op1").value;
+
+  let op1 = document.getElementByIdº("op1").value;
   let op2 = document.getElementById("op2").value;
 
   if (isNaN(op1) || isNaN(op2) || op1 === "" || op2 === "") {
-    alert("Please enter valid numbers.");
+    alert("error");
     return false;
-  }
+}
   return true;
 }
 
