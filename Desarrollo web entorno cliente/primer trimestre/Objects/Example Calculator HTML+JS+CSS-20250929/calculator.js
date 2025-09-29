@@ -1,13 +1,12 @@
 function comprobarNum() {
-
-  let op1 = document.getElementByIdº("op1").value;
+  let op1 = document.getElementById("op1").value;
   let op2 = document.getElementById("op2").value;
 
   if (isNaN(op1) || isNaN(op2) || op1 === "" || op2 === "") {
-    alert("error");
-    return false;
-}
-  return true;
+    alert("error enter a valid numbers.");
+    return true;
+  }
+  return false;
 }
 
 
@@ -37,10 +36,10 @@ function calculate() {
         result = op1 / op2;
         break;
       default:
-        console.log("error");
+        alert("error");
         return;
     }
 
-    console.log("Result:", result);
+    alert(`Result: ${result}`);
   }
 }
