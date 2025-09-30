@@ -1,0 +1,57 @@
+<!--
+Create a simple web page with a form called Student Grades. The form must contain the following fields:
+
+Student name
+
+Math grade
+
+Language grade
+
+Science grade
+
+When the user clicks the Calculate Average button, your program must:
+
+Store the data in a JavaScript object with this structure:
+
+let student = {
+  name: "Student name",
+  math: value,
+  language: value,
+  science: value
+};
+
+Validate that all grade fields are not empty and contain numbers.
+
+Use a for...in loop to go through the object’s properties and calculate the average of the grades (ignore the name property).
+
+Display the student’s average grade in an alert.
+
+Important: You must use a for...in loop to process the properties of the object.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 02 - Student Grades with for...in</title>
+    <script src="js.js"></script>
+</head>
+<body>
+    <h2>Student Grades</h2>
+    <form id="GradesForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br><br>
+
+        <label for="math">Math:</label>
+        <input type="text" id="math"><br><br>
+
+        <label for="Language">Languaje:</label>
+        <input type="text" id="languaje"><br><br>
+
+        <label for="Science">Science:</label>
+        <input type="text" id="science"><br><br>
+
+        <button type="button" onclick="control()">Calculate average</button>
+    </form>
+</body>
+</html>
