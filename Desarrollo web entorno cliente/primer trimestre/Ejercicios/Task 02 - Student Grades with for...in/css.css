@@ -1,0 +1,24 @@
+body {
+
+
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+    text-shadow: 4px 4px 6px gray; 
+}
+
+h1{
+    color: blue;
+    margin-bottom: 20px;
+
+}
+form {
+
+    border: 7px solid blue;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: lightblue;
+    display: inline-block;
+
+}
