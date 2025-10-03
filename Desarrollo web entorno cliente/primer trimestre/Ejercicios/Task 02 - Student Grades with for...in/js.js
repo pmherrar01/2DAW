@@ -1,4 +1,5 @@
 let students = [];
+let error = false;
 
 function anadirStudient(nameStudent, math, languaje, science) {
     let student = {
@@ -13,8 +14,9 @@ function anadirStudient(nameStudent, math, languaje, science) {
 function comprobarString() {
     let nameStudent = document.getElementById("name").value;
 
-    if(nameStudent.trim() === "") {
+    if(nameStudent.trim() === "" || !isNaN(nameStudent)) {
         alert("Por favor, ingresa un nombre");
+        error = true;
     }else{
         return nameStudent;
     }
@@ -26,6 +28,7 @@ function comprobarNum(num) {
 
     if(isNaN(nota) || nota < 0 || nota > 10) {
         alert("Please, enter a valid number");
+        error = true;
     }else{
         return nota;
     }
@@ -58,5 +61,8 @@ function control() {
 
     let averageGrades = calculateAverageGrades(newStudent);
 
-    alert(`The average grade of ${newStudent.name} is ${averageGrades}`);
+    if(!error){
+        alert(`The average grade of ${newStudent.name} is ${averageGrades}`);
+    }
+    
 }
