@@ -34,14 +34,16 @@ function comprobarNum(num) {
 
 function calculateAverageGrades(student) {
     let averageGrades = 0;
+    let count = 0;
     for (const key in student) {
         if (key === "name") {
             continue;
         }
         averageGrades += Number(student[key]);
+        count++;
     }
 
-    return averageGrades / students.length++;
+    return averageGrades / count;
 }
 
 

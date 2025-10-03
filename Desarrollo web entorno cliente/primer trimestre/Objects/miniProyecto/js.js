@@ -6,10 +6,10 @@ let prenda1 = {
 }
 
 let prenda2 = {
-    tipoDePrenda: "camiseta",
-    precio: 30,
-    fechaSalida: new Date("2019-12-20"),
-    tara : true 
+    tipoDePrenda: "sudadera",
+    precio: 55,
+    fechaSalida:new Date("2025-09-2"),
+    tara : false 
 }
 
 let prenda3 = {
@@ -61,10 +61,14 @@ function borrarPrenda(tipoDePrenda, aPrendas) {
     }
 
 }
+function comparar(prenda1, prenda2) {
+    return prenda1. === prenda2;
+}
 
 
 mostrarStock(aStock);
 
-anadirPrenda();
+//anadirPrenda();
 
-mostrarStock(aStock);
+//mostrarStock(aStock);
+console.log(comparar(aStock[0], aStock[1]));
