@@ -62,7 +62,7 @@ function borrarPrenda(tipoDePrenda, aPrendas) {
 
 }
 function comparar(prenda1, prenda2) {
-    return prenda1. === prenda2;
+    return prenda1 === prenda2;
 }
 
 
