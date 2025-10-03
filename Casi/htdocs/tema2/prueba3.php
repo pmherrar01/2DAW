@@ -13,20 +13,22 @@
        // print"<br />";
        // print "\$b vale $b y es de tipo".gettype($b);
 
-       $a = 7;
-       $b = "8";
-       $c= true;
-       $d = "ocho";
-       $e = null;
-       unset($e);
-       $resultado=$a+$b+$c;
-       echo $resultado;
+       //$a = 7;
+       //$b = "8";
+       //$c= true;
+       //$d = "ocho";
+       //$e = null;
+       //unset($e);
+       //$resultado=$a+$b+$c;
+       //echo $resultado;
 
-       echo "<BR>¿Es numerico \$a? ".(is_numeric($a)?"SI":"NO" );
-       echo "<BR>¿Es numerico \$d? ".(is_numeric($d)?"SI":"NO" );
+      // echo "<BR>¿Es numerico \$a? ".(is_numeric($a)?"SI":"NO" );
+       //echo "<BR>¿Es numerico \$d? ".(is_numeric($d)?"SI":"NO" );
 
-       echo "<BR>isset (\$e): ".(isset($e)?"true":"false");
-       echo "<BR>empty (\$e): ".(empty($e)?"true":"false");
+//       echo "<BR>isset (\$e): ".(isset($e)?"true":"false");
+  //     echo "<BR>empty (\$e): ".(empty($e)?"true":"false");
+
+  
     ?>
 </body>
 </html>
