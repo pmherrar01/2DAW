@@ -17,6 +17,8 @@ function anadirPrenda() {
     }
     aStock.push(prendaNueva);
 
+    mostrarStock(aStock);
+
 
 
 }
@@ -43,7 +45,7 @@ function datosPrenda(tipoPrenda, precio, fechaSalida, tara) {
     return prenda;
 }
 
-//funcion para mostrar el array que lo uso para comprobar que se añden bien al array
+//funcion para mostrar el array que lo uso para comprobar que se añaden bien al array
 function mostrarStock(aPrendas) {
     for (let i = 0; i < aPrendas.length; i++) {
 
