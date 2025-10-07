@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio3</title>
+</head>
+<body>
+    <h1>Pide lo que te apetece</h1>
+    <form action="mailto:comandas@hamburgueseria.com:"method="post" autocomplete="on" enctype="text/plain">
+        <p>Selecions el número de hamburguesas que desees:</p>
+        <ul>
+            <li>Hamburguesa completa <input type="number" name="hamburguesa1" id="hamburguesa1" min="0" max="10" value="0"></li>
+            <li>Hamburguesa de pollo <input type="number" name="hamburguesa2" id="hamburguesa2" min="0" max="10" value="0"></li>
+            <li>Hamburguesa vegetariana<input type="number" name="hamburguesa3" id="hamburguesa3" min="0" max="10" value="0"></li>
+            <li>Hamburguesa doble <input type="number" name="hamburguesa4" id="hamburguesa4" min="0" max="10" value="0"></li>
+        </ul>
+
+        <p>Escribe las modificaciones o preferencias sobre el pedido:</p>
+        <textarea name="modificaciones" id="modificaciones" cols="30" rows="10" placeholder="Si el pepino no es para ti dinoslo."></textarea>
+        <hr>
+        <h2>Datos de contacto</h2>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" name="telefono" id="telefono" required>
+        <br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" name="direccion" id="direccion" required>
+        <br>
+        <label for="direccion">¿Eres mayor de edad?</label>
+        <select name="mayorEdad" id="mayorEdad" required>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
+        <hr>
+        <!-- check para marcar  -->
+        <input type="checkbox" name="notificaciones" id="notificaciones" required>
+        <label for="terminos">Quiero recibir información sobre ofertas</label> 
+        <input type="checkbox" name="terminos" id="terminos" required>
+        <label for="terminos">Acepto las condiciones de uso del servicio</label>
+        <hr>
+        <!-- Boton borrar y boton aceptar -->
+        <input type="reset" value="Borrar">
+        <input type="submit" value="Aceptar">        
+         
+    </form>
+   
+</body>
+</html>
