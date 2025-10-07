@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniProyecto</title>
+    <script src="js.js"></script>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <form>
+            <label for="tipodePrenda">Tipo de prenda:</label><br>
+            <input type="text" id="tipodePrenda" name="tipodePrenda"><br> <br>
+
+            <label for="precio">Precio: </label>
+            <span id="precioTexto">50</span>
+            <input type="range" id="precio" min="3" max="200" value="50"
+                oninput="document.getElementById('precioTexto').textContent=this.value"><br><br>
+            <label for="fechaSalida">Fecha de salida:</label><br>
+            <input type="date" id="fechaSalida" name="fechaSalida"><br><br>
+            <label>Tara:</label><br>
+
+            <input type="radio" id="tara_si" name="tara" value="true">
+            <label for="tara_si">Sí</label><br>
+            <input type="radio" id="tara_no" name="tara" value="false">
+            <label for="tara_no">No</label><br><br>
+
+            <input type="button" value="Enviar" onclick="anadirPrenda()">
+        </form>
+    </div>
+
+
+
+
+</body>
+
+</html>
