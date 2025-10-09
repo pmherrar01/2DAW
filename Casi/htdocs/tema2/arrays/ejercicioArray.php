@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    echo "<h1>Array de colores</h1>";
     $colores = ["rojo", "verde", "azul", "amarillo", "naranja"];
     $tamanio = count($colores);
     for ($i=0; $i < $tamanio; $i++) { 
