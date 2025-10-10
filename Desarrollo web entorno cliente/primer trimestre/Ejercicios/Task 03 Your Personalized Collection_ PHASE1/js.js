@@ -8,7 +8,7 @@ let cont = 0;
     por que no se muy bien a que te refieres con que añadamos el contador que muestre cuantos elementos se han añadido al array
 */ 
 //funcion para añadir una prenda al array
-function anadirPrenda() {
+function anadirPrenda() { 
     console.log(aStock)
     let prendaNueva;
 
