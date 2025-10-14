@@ -19,6 +19,9 @@ nav a {
     color: #000;
     font-weight: bold;
 }
+header{
+    background: #e0e0e0;
+}
 
 .hero {
     background: #e0e0e0;
@@ -77,7 +80,7 @@ nav a {
 }
 
 footer {
-    background-color: #2c2c2c;
+    background-color: #7400E0;
     color: #fff;
     padding: 40px 20px;
     display: flex;
@@ -90,3 +93,10 @@ footer a {
     margin-right: 15px;
     text-decoration: none;
 }
+#idioma {
+    background-color: #0050FF;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  
+  
