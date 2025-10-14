@@ -71,17 +71,21 @@ function datosPrenda(tipoPrenda, descripcion, precio, fechaSalida, tara) {
 
 //funcion para odernar el array por precio
 function ordenarPrecio() {
-    aStock.sort((a, b) => a.precio - b.precio);
+
+    return aStock.sort((a, b) => a.detalles[1] - b.detalles[1]);
 
 }
 
 //funcion para comprobar si una prenda ya existe en el array
 function prendaExiste(prendaNueva) {
-    for (const prenda in aStock) {
-        if(prenda.tipoPrenda === prendaNueva.tipoPrenda && prenda.detalles[0] === prendaNueva.detalles[0] && prenda.detalles[1] === prendaNueva.detalles[1] && prenda.detalles[2] === prendaNueva.detalles[2] && prenda.detalles[3] === prendaNueva.detalles[3]){
+    
+    for (let i = 0; i < aStock.length; i++) {
+
+        if (aStock[i].tipoPrenda === prendaNueva.tipoPrenda && aStock[i].detalles[0] === prendaNueva.detalles[0] && aStock[i].detalles[1] === prendaNueva.detalles[1] && aStock[i].detalles[2] === prendaNueva.detalles[2] && aStock[i].detalles[3] === prendaNueva.detalles[3]) {
             return true;
-        } 
-    }    
+        }
+        
+    }
 
     return false;
     
@@ -90,15 +94,16 @@ function prendaExiste(prendaNueva) {
 //funcion para mostrar
 function mostrarStock() {
 
-    ordenarPrecio();
+    let aStockOrdenado = ordenarPrecio();
 
-    alert(`Mostarndo el stock ordenado por precio`);
+    let mensaje = `Mostarndo el stock ordenado por precio\n`;
 
-   for (const tipodePrenda in aStock) {
-    alert(`Prenda ${parseInt(tipodePrenda) + 1}:   ${aStock[tipodePrenda].tipoPrenda} \n Descipcion: ${aStock[tipodePrenda].detalles[0]} \nPrecio: ${aStock[tipodePrenda].detalles[1]} \nFecha de salida: ${aStock[tipodePrenda].detalles[2]} \n¿Tiene tara?: ${aStock[tipodePrenda].detalles[3]}`);
-        
+   for (const tipodePrenda in aStockOrdenado) {
+    mensaje += `\n Prenda ${parseInt(tipodePrenda) + 1}:   ${aStockOrdenado[tipodePrenda].tipoPrenda} \n Descipcion: ${aStockOrdenado[tipodePrenda].detalles[0]} \nPrecio: ${aStockOrdenado[tipodePrenda].detalles[1]} \nFecha de salida: ${aStockOrdenado[tipodePrenda].detalles[2]} \n¿Tiene tara?: ${aStockOrdenado[tipodePrenda].detalles[3]}\n`
     
    }
+
+    alert(mensaje);
 
     alert(`Se han añadido ${cont} prendas al stock`);
     cont = 0;
