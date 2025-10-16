@@ -1,14 +1,48 @@
+/*Estilo del body con una imagen de fondo*/
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('img/img1.png'); /* Cambia esto por tu imagen */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*clase cointenedor que dentro va a tener el formulario que esta en el centro de la pagina, con un borde azul y una pequeña sombre*/
 .contenedor {
     width: 400px;
-    margin: 50px auto;
     padding: 20px;
-    border: 3px solid #007BFF;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); 
     text-align: center;
+}
+
+
     
+
+/*estilo para los botones que al pasar el raton por encima cambian de color y se hace mas grande*/
+.boton {
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.boton:hover{
+    background-color: #fff023;
+    color: rgb(2, 1, 1);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+
 }
 
 
