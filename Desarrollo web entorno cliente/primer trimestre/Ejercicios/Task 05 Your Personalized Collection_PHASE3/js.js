@@ -22,14 +22,15 @@ function anadirPrenda() {
             document.getElementById("fechaSalida").value,
             document.querySelector('input[name="tara"]:checked').value === "true" ? true : false
         );
+        if (prendaExiste(prendaNueva)) {
+            alert("La prenda ya existe en el stock");
+        }else{
+            aStock.push(prendaNueva);
+            cont++;
+        }
     }
 
-    if (prendaExiste(prendaNueva)) {
-        alert("La prenda ya existe en el stock");
-    }else{
-        aStock.push(prendaNueva);
-        cont++;
-    }
+   
 
     
 
@@ -76,15 +77,21 @@ function ordenarPrecio() {
 }
 
 //funcion para comprobar si una prenda ya existe en el array
-function prendaExiste(prendaNueva) {
-    
-    for (let i = 0; i < aStock.length; i++) {
+function prendaExiste(prendaBuscar) {
 
-        if (aStock[i].tipoPrenda === prendaNueva.tipoPrenda && aStock[i].detalles[0] === prendaNueva.detalles[0] && aStock[i].detalles[1] === prendaNueva.detalles[1] && aStock[i].detalles[2] === prendaNueva.detalles[2] && aStock[i].detalles[3] === prendaNueva.detalles[3]) {
-            return true;
+    if (aStock.length === 0) {
+        return false;
+    }else{
+        for (let i = 0; i < aStock.length; i++) {
+
+            if (aStock[i].tipoPrenda === prendaBuscar.tipoPrenda && aStock[i].detalles[0] === prendaBuscar.detalles[0] && aStock[i].detalles[1] === prendaBuscar.detalles[1] && aStock[i].detalles[2] === prendaBuscar.detalles[2] && aStock[i].detalles[3] === prendaBuscar.detalles[3]) {
+                return true;
+            }
+            
         }
-        
     }
+    
+    
 
     return false;
     
