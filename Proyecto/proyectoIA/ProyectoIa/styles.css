@@ -1,0 +1,188 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+
+/* Logo */
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  padding: 20px;
+  background: linear-gradient(90deg, #ff0040, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px #ff0040);
+}
+
+/* Header y navegación */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 10px 30px;
+  border-bottom: 2px solid #ff0040;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff0040;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: url('fondo-glitch.jpg') no-repeat center center/cover;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #ff0040;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: #ff0040;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #cc0033;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-top: 2px solid #ff0040;
+  font-size: 0.9rem;
+}
+
+
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px;
+}
+
+.producto {
+  background-color: #1a1a1a;
+  border: 1px solid #ff0040;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: scale(1.05);
+}
+
+.producto img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.producto h2 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.producto p {
+  margin: 5px 0;
+}
+
+.producto button {
+  background-color: #ff0040;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.producto button:hover {
+  background-color: #cc0033;
+}
+
+.producto-detalle {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  align-items: flex-start;
+}
+
+.producto-detalle img {
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.producto-detalle .info {
+  flex: 1;
+}
+
+.producto-detalle form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.producto-detalle select,
+.producto-detalle button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.producto-detalle button {
+  background-color: #ff0040;
+  color: white;
+  cursor: pointer;
+}
+
+.producto-detalle button:hover {
+  background-color: #cc0033;
+}
+
