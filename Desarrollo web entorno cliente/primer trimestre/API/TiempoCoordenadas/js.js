@@ -17,8 +17,8 @@ function pintarTemperaturaActual(datos, horaActual) {
 
         container.innerHTML = `
             <div class="card">
-                <p>Temperatura actual: ${temperaturaActual}°C</p>
-                <p>Humedad relativa: ${humedadActual} %</p>
+                <p>Temperatura en dos horas: ${temperaturaActual}°C</p>
+                <p>Humedad relativa en dos horas: ${humedadActual} %</p>
             </div>
         `;
 

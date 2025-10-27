@@ -1,0 +1,80 @@
+/*Estilo del body con una imagen de fondo*/
+body {
+    min-height: 100vh;
+    background-image: url('img1.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*clase cointenedor que dentro va a tener el formulario que esta en el centro de la pagina, una pequeña sombra y difuminado el centro*/
+.contenedor {
+    width: 400px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px); 
+    text-align: center;
+}
+
+input[type="range"] {
+
+    background: yellow; 
+    -webkit-appearance: none; 
+    border-radius: 5px;
+
+}
+
+
+    
+
+/*estilo para los botones que al pasar el raton por encima cambian de color y se hace mas grande*/
+.boton {
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.boton:hover{
+    background-color: #fff023;
+    color: rgb(2, 1, 1);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+
+}
+
+
+/*Estilos para la temperatura que es un div que se pone arriba a la derecha  */
+#container{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    color: black;
+  }
+
+  .card{
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px); 
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 10px;
+
+  }
+/*div de la frase que quier que este abajo a la derecha*/
+#frase{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    color: black;
+  }
