@@ -177,126 +177,36 @@ fetch(`https://jsonplaceholder.typicode.com/posts`)
     .then(response => response.json())
     .then(
         json => {
-           // const aUsuarios = json;
+            // const aUsuarios = json;
             pintarFrase(json);
 
         }
     );
+
+
 function pintarFrase(usuarios) {
 
     const containerFrase = document.getElementById('frase');
 
     const usuarioId = Math.floor(Math.random() * 10) + 1;
-    let idFrase = 0;
-    let contenidoFrase = '';
+    let idFrase = Math.floor(Math.random() * 10) + 1 + (usuarioId - 1) * 10;
+    let contenidoFrase = "No se ha encontrado nada";
 
-    switch (usuarioId) {
-        case 1:
-            idFrase = Math.floor(Math.random() * 10) + 1;
-            for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 1 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 2:
-            
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 10;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 2 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 3:
-            
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 20;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 3 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 4:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 30;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 4 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 5:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 40;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 5 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-
-        case 6:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 50;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 6 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 7:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 60;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 7 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 8:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 70;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 8 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 9:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 80;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 9 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-        break;
-        case 10:
-        idFrase = (Math.floor(Math.random() * 10) + 1) + 90;
-        for(let i = 1; i <= 10; i++){
-            if(usuarios[usuarioId] == 10 && usuarios[1].idFrase == idFrase){
-                contenidoFrase = usuarios[usuarioId].body;
-            }
-        }
-
-
-        break;
-
-        default:
-            contenidoFrase = "No se ha encontrado nada";
+    for(let i = 0; i < usuarios.length; i++){
+        if(usuarios[i].userId === usuarioId && usuarios[i].id === idFrase){
+            contenidoFrase = usuarios[i].body;
             break;
+        }
     }
 
     containerFrase.innerHTML = `
-    <div class="frase">
+    <div class="card">
     <p>Frase aleatoria : ${contenidoFrase}</p>
     </div>
 `;
+    }
+
+    
 
 
 
-}
