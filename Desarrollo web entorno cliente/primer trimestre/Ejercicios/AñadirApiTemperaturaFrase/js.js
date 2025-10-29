@@ -189,7 +189,7 @@ function pintarFrase(usuarios) {
     const containerFrase = document.getElementById('frase');
 
     const usuarioId = Math.floor(Math.random() * 10) + 1;
-    let idFrase = Math.floor(Math.random() * 10) + 1 + (usuarioId - 1) * 10;
+    let idFrase = Math.floor(Math.random() * 10) + 1 + (usuarioId - 1) * 10;   
     let contenidoFrase = "No se ha encontrado nada";
 
     for(let i = 0; i < usuarios.length; i++){
