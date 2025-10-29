@@ -10,203 +10,184 @@ let cont = 0;
 */
 //funcion para añadir una prenda al array
 function anadirPrenda() {
-    let prendaNueva;
+  let prendaNueva;
 
-    if (!validarpPrenda()) {
-        alert("Por favor, rellena todos los campos");
+  if (!validarpPrenda()) {
+    alert("Por favor, rellena todos los campos");
+  } else {
+    prendaNueva = datosPrenda(
+      Math.floor(Math.random() * 100000),
+      document.getElementById("tipoPrenda").value,
+      document.getElementById("descripcion").value,
+      document.getElementById("precio").value,
+      document.getElementById("fechaSalida").value,
+      document.querySelector('input[name="tara"]:checked').value === "true"
+        ? true
+        : false
+    );
+    if (prendaExiste(prendaNueva)) {
+      alert("La prenda ya existe en el stock");
     } else {
-        prendaNueva = datosPrenda(
-            document.getElementById("tipoPrenda").value,
-            document.getElementById("descripcion").value,
-            document.getElementById("precio").value,
-            document.getElementById("fechaSalida").value,
-            document.querySelector('input[name="tara"]:checked').value === "true" ? true : false
-        );
-        if (prendaExiste(prendaNueva)) {
-            alert("La prenda ya existe en el stock");
-        } else {
-            aStock.push(prendaNueva);
-            cont++;
-        }
+      aStock.push(prendaNueva);
+      cont++;
     }
-
-
-
-
-
-
-
+  }
 }
 
 //funcion para validar que todos los campos esten rellenos
 function validarpPrenda() {
-    let tipoPrenda = document.getElementById("tipoPrenda").value;
-    let descripcion = document.getElementById("descripcion").value;
-    let precio = document.getElementById("precio").value;
-    let fechaSalida = document.getElementById("fechaSalida").value;
-    let tara = document.querySelector('input[name="tara"]:checked');
+  let tipoPrenda = document.getElementById("tipoPrenda").value;
+  let descripcion = document.getElementById("descripcion").value;
+  let precio = document.getElementById("precio").value;
+  let fechaSalida = document.getElementById("fechaSalida").value;
+  let tara = document.querySelector('input[name="tara"]:checked');
 
-    if (tipoPrenda === "" || descripcion === "" || precio === "" || fechaSalida === "" || tara === null) {
-        return false;
-    }
+  if (
+    tipoPrenda === "" ||
+    descripcion === "" ||
+    precio === "" ||
+    fechaSalida === "" ||
+    tara === null
+  ) {
+    return false;
+  }
 
-    return true;
-
+  return true;
 }
 //funcion para crear un objeto prenda que lo retorna
-function datosPrenda(tipoPrenda, descripcion, precio, fechaSalida, tara) {
+function datosPrenda(
+  codigoPrenda,
+  tipoPrenda,
+  descripcion,
+  precio,
+  fechaSalida,
+  tara
+) {
+  let prenda = {
+    codigoPrenda,
+    tipoPrenda,
+    descripcion,
+    precio,
+    fechaSalida,
+    tara,
+  };
 
-    let prenda = {
-        tipoPrenda,
-        detalles: [
-            descripcion,
-            precio,
-            fechaSalida,
-            tara
-        ]
-    }
-
-    return prenda;
+  return prenda;
 }
 
 //funcion para odernar el array por precio
 function ordenarPrecio() {
-
-    return aStock.sort((a, b) => a.detalles[1] - b.detalles[1]);
-
+  return aStock.sort((a, b) => a.precio - b.precio);
 }
 
 //funcion para comprobar si una prenda ya existe en el array
 function prendaExiste(prendaBuscar) {
-
-    if (aStock.length === 0) {
-        return false;
-    } else {
-        for (let i = 0; i < aStock.length; i++) {
-
-            if (aStock[i].tipoPrenda === prendaBuscar.tipoPrenda && aStock[i].detalles[0] === prendaBuscar.detalles[0] && aStock[i].detalles[1] === prendaBuscar.detalles[1] && aStock[i].detalles[2] === prendaBuscar.detalles[2] && aStock[i].detalles[3] === prendaBuscar.detalles[3]) {
-                return true;
-            }
-
-        }
-    }
-
-
-
+  if (aStock.length === 0) {
     return false;
+  } else {
+    for (let i = 0; i < aStock.length; i++) {
+      if (aStock[i].codigoPrenda === prendaBuscar.codigoPrenda) {
+        return true;
+      }
+    }
+  }
 
+  return false;
 }
 
 //funcion para borrar una prenda del array
 function borrarPrenda() {
 
-    let prenda = datosPrenda(document.getElementById("tipoPrenda").value,
-        document.getElementById("descripcion").value,
-        document.getElementById("precio").value,
-        document.getElementById("fechaSalida").value,
-        document.querySelector('input[name="tara"]:checked').value === "true" ? true : false
-    );
+  let codigoPrendaABorrar = prompt( mostrarStock(),
+    "Introduce el codigo de la prenda a borrar:"
+  );
 
-    if (!validarpPrenda(prenda)) {
-        alert("Por favor, rellena todos los campos");
-
-    } else {
-        if (!prendaExiste(prenda)) {
-            alert("La prenda no existe en el stock");
-        } else {
-            for (let i = 0; i < aStock.length; i++) {
-                if (aStock[i].tipoPrenda === prenda.tipoPrenda && aStock[i].detalles[0] === prenda.detalles[0] && aStock[i].detalles[1] === prenda.detalles[1] && aStock[i].detalles[2] === prenda.detalles[2] && aStock[i].detalles[3] === prenda.detalles[3]) {
-                    aStock.splice(i, 1);
-                    alert("Prenda borrada del stock");
-                    break;
-                }
-            }
-        }
+  if (aStock.includes(codigoPrendaABorrar)) {
+    alert("La prenda no existe en el stock");
+  } else {
+    for (let i = 0; i < aStock.length; i++) {
+      if (aStock[i].codigoPrenda == codigoPrendaABorrar) {
+        aStock.splice(i, 1);
+        alert("Prenda borrada correctamente");
+        return;
+      }
     }
-
-
+  }
 }
 
 //funcion para mostrar
 function mostrarStock() {
+  let aStockOrdenado = ordenarPrecio();
 
-    let aStockOrdenado = ordenarPrecio();
+  let mensaje = `Mostarndo el stock ordenado por precio\n`;
 
-    let mensaje = `Mostarndo el stock ordenado por precio\n`;
+  for (let i = 0; i < aStockOrdenado.length; i++ ) {
+    mensaje += `\n Codigo prenda ${aStockOrdenado[i].codigoPrenda}:   ${
+      aStockOrdenado[i].tipoPrenda
+    } \n Descipcion: ${aStockOrdenado[i].descripcion} \nPrecio: ${
+      aStockOrdenado[i].precio
+    } \nFecha de salida: ${
+      aStockOrdenado[i].fechaSalida
+    } \n¿Tiene tara?: ${aStockOrdenado[i].tara}\n`;
+  }
 
-    for (const tipodePrenda in aStockOrdenado) {
-        mensaje += `\n Prenda ${parseInt(tipodePrenda) + 1}:   ${aStockOrdenado[tipodePrenda].tipoPrenda} \n Descipcion: ${aStockOrdenado[tipodePrenda].detalles[0]} \nPrecio: ${aStockOrdenado[tipodePrenda].detalles[1]} \nFecha de salida: ${aStockOrdenado[tipodePrenda].detalles[2]} \n¿Tiene tara?: ${aStockOrdenado[tipodePrenda].detalles[3]}\n`
+  alert(mensaje);
 
-    }
-
-    alert(mensaje);
-
-    alert(`Se han añadido ${cont} prendas al stock`);
-    cont = 0;
-
+  alert(`Se han añadido ${cont} prendas al stock`);
+  cont = 0;
 }
-
 
 const latitude = 39.4765;
 const longitude = -6.3722;
 
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relative_humidity_2m&timezone=auto&forecast_days=1`)
-    .then(response => response.json())
-    .then(json => {
-        const horaActual = new Date().getHours();
-        const datos = json.hourly;
-        pintarTemperaturaActual(datos, horaActual);
-    });
+fetch(
+  `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relative_humidity_2m&timezone=auto&forecast_days=1`
+)
+  .then((response) => response.json())
+  .then((json) => {
+    const horaActual = new Date().getHours();
+    const datos = json.hourly;
+    pintarTemperaturaActual(datos, horaActual);
+  });
 
 function pintarTemperaturaActual(datos, horaActual) {
-    const container = document.getElementById('container');
+  const container = document.getElementById("container");
 
-    const temperaturaActual = datos.temperature_2m[horaActual + 2];
-    const humedadActual = datos.relative_humidity_2m[horaActual + 2];
+  const temperaturaActual = datos.temperature_2m[horaActual + 2];
+  const humedadActual = datos.relative_humidity_2m[horaActual + 2];
 
-    container.innerHTML = `
+  container.innerHTML = `
             <div class="card">
                 <p>Temperatura en dos horas: ${temperaturaActual}°C</p>
                 <p>Humedad relativa en dos horas: ${humedadActual} %</p>
             </div>
         `;
-
 }
 
 fetch(`https://jsonplaceholder.typicode.com/posts`)
-    .then(response => response.json())
-    .then(
-        json => {
-            // const aUsuarios = json;
-            pintarFrase(json);
-
-        }
-    );
-
+  .then((response) => response.json())
+  .then((json) => {
+    // const aUsuarios = json;
+    pintarFrase(json);
+  });
 
 function pintarFrase(usuarios) {
+  const containerFrase = document.getElementById("frase");
 
-    const containerFrase = document.getElementById('frase');
+  const usuarioId = Math.floor(Math.random() * 10) + 1;
+  let idFrase = Math.floor(Math.random() * 10) + 1 + (usuarioId - 1) * 10;
+  let contenidoFrase = "No se ha encontrado nada";
 
-    const usuarioId = Math.floor(Math.random() * 10) + 1;
-    let idFrase = Math.floor(Math.random() * 10) + 1 + (usuarioId - 1) * 10;   
-    let contenidoFrase = "No se ha encontrado nada";
-
-    for(let i = 0; i < usuarios.length; i++){
-        if(usuarios[i].userId === usuarioId && usuarios[i].id === idFrase){
-            contenidoFrase = usuarios[i].body;
-            break;
-        }
+  for (let i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].userId === usuarioId && usuarios[i].id === idFrase) {
+      contenidoFrase = usuarios[i].body;
+      break;
     }
+  }
 
-    containerFrase.innerHTML = `
+  containerFrase.innerHTML = `
     <div class="card">
     <p>Frase aleatoria : ${contenidoFrase}</p>
     </div>
 `;
-    }
-
-    
-
-
-
+}
