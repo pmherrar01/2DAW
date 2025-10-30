@@ -1,0 +1,38 @@
+<!--
+Nivel 1: El Gestor de Tareas
+
+Enunciado:
+
+Crea una aplicación web para gestionar una lista de tareas (To-Do List).
+
+El usuario debe poder escribir una tarea en un campo de texto y añadirla a una lista visible en la página usando un botón.
+
+El usuario debe poder marcar una tarea como "completada". Al hacerlo, la tarea debe tacharse visualmente.
+
+El usuario debe poder eliminar cualquier tarea de la lista (tenga en cuenta que debe ser capaz de eliminar tareas específicas).
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css1.css">
+    <script src="js1.js"></script>
+    <title>Ejercicio1 repaso</title>
+</head>
+<body>
+    <div class="contenido">
+        <input type="text" id="enunciado">
+        <button type="button" onclick="rellenarLista()">Agregar</button>
+        <button type="button" onclick="mostrarLista()">mostrar</button>
+        <button type="button" onclick="borrarElemento()">eleminar una tarea</button>
+        <div id="lista"></div>
+    </div>
+
+   
+
+</body>
+</html>

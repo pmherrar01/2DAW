@@ -1,0 +1,11 @@
+#galeriaGatos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+    gap: 10px; /* Espaciado entre las imágenes */
+}
+
+.gato img {
+    width: 100%; /* Ajusta el ancho de la imagen al contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados opcionales */
+}

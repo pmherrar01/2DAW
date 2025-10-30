@@ -1,0 +1,25 @@
+/*quiero poner los botones uno al lado de del otrocpero debajo del input*/
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(239, 187, 96);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+
+}
+
+.tarea-completada {
+    text-decoration: line-through;
+
+    color: grey; 
+}
+
+/*quier que no se muestren lis puntos de los li*/
+li{
+    list-style-type: none;
+}
