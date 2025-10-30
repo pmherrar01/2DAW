@@ -20,25 +20,30 @@ Un lugar para mostrar el resultado (ej: "100 EUR son 108.50 USD").
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js3.js"></script>
+    <title>Conversor de Divisas</title>
     <link rel="stylesheet" href="css3.css">
-    <title>Ejercicio 3 </title>
+    <script src="js.js"></script>
 </head>
 <body>
-    <div class="contenido">
-        <input type="number">
-        <select name="horigen" id="">
-            <section>euros</section>
-            <section>dolares</section>
-            <section>libras</section>
-        </select>
-        <select name="destino" id="">
-            <section>euros</section>
-            <section>dolares</section>
-            <section>libras</section>
-        </select>
+
+    <div class="conversor-container">
+        <h2>Conversor de Divisas</h2>
         
+        <div class="controles">
+            <input type="number" id="cantidad" value="1" min="1">
+            
+            <select id="moneda-origen">
+                </select>
+            
+            <select id="moneda-destino">
+                </select>
+        </div>
+        
+        <button id="btn-convertir">Convertir</button>
+        
+        <p id="resultado"></p>
     </div>
-    
+
+
 </body>
 </html>
