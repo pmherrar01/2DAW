@@ -1,9 +1,15 @@
 const referenciaClave = document.getElementById("clave");
-const referenciaNombre = document.querySelector('input[name="opcion"]:checked').value === "name"; 
-const referenciaEmail = document.querySelector('input[name="opcion"]:checked').value === "email";
 let aResultados = [];
 const palabrasClave_pmhr = "Leanne";
-const modo_pmhr = "name";
+const modo_pmhr = document.getElementsByName("opcion");
+let boton_pmhr = "";
+
+for (let i = 0; i < modo_pmhr.length; i++) {
+    if(modo_pmhr[i].checked){
+        boton_pmhr = modo_pmhr[i].value;
+    }
+    
+}
 //usamos const para una variables por que son constantes es decir que su valor no se va a modificar y let para otras por que si se va a modificar su valor
 
 
@@ -27,7 +33,7 @@ fetch(
                 contenido += aDatos[i].name;
                 aResultados.push(aDatos[i]);
             }
-            
+        
         }
 
         contenidoDatos.innerHTML = `<p>Personas con el nombre "Leanne" ${contenido}</p> <br> el total de resultados son: ${aResultados.length}`;
