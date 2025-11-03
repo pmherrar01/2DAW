@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso selectores</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <h1>Ejercicio práctico con Tablas</h1>
+    <table>
+<tr>
+    <td></td>
+    <td colspan="3"><img src="./img/120_ipod.png" alt=""></td>
+    <td colspan="2"><img src="./img/100_ipod.png" alt=""></td>
+
+</tr>
+<tr id="fila">
+    <td class="primera">capacidad</td>
+    <td class="gb">2gb</td>
+    <td class="gb">4gb</td>
+    <td class="gb">8gb</td>
+    <td class="gb">32gb</td>
+    <td class="gb">2gb</td>
+</tr>
+<tr id="listas">
+    <td class="primera">colores</td>
+    <td>blanco</td>
+    <td><ul >
+        <li >negro</li>
+        <li>rosa</li>
+        <li>dorado</li>
+    </ul></td>
+    <td>negro</td>
+    <td colspan="2"><ul>
+        <li>negro</li>
+        <li>blanco</li>
+    </ul></td>
+</tr>
+<tr>
+    <td class="primera">pantalla</td>
+    <td colspan="3">3 pulgadas</td>
+    <td colspan="2">7 pulgadas</td>
+</tr>
+<tr>
+    <td rowspan="2" class="primera">tiempo de carga</td>
+    <td colspan="3" rowspan="2" >1 hora</td>
+    <td colspan="2" id="cinco">5 horas</td>
+</tr>
+<tr>
+    <td colspan="2">30 minutos para 75%</td>
+
+</tr>
+    </table>
+</body>
+</html>
