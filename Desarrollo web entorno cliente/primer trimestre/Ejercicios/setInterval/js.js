@@ -8,9 +8,12 @@ let cont = 0;
     a parte en el metodo mostrar voy poniendo cuantas prendas tiene el array,
     por que no se muy bien a que te refieres con que añadamos el contador que muestre cuantos elementos se han añadido al array
 */
-//funcion para añadir una prenda al array
-setInterval(mostrarHora, 1000);
+const reloj = document.getElementById("reloj");
 
+let intervalo = setInterval(mostrarHora, 1000);
+
+
+//funcion para añadir una prenda al array
 function anadirPrenda() {
   let prendaNueva;
 
@@ -173,31 +176,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts`)
     pintarFrase(json);
   });
 
-function mostrarHora() {
-    const containerHora = document.getElementById("frase");
 
-    let ahora = new Date();
-    let contenidoHora = ahora.toLocaleTimeString();
-  
-    containerHora.innerHTML  += ` 
-    <div class="card">
-        <p>${contenidoHora}</p>
-    </div>
-    `;
-
-    containerHora.innerHTML  += ` 
-    <div class="card">
-        <p>${contenidoHora}</p>
-    </div>
-    `;
-
-    containerHora.removeChild(containerHora.children[1]);
-
-
-    
-}
-
-mostrarHora();
 
 function pintarFrase(usuarios) {
   const containerFrase = document.getElementById("frase");
@@ -218,4 +197,32 @@ function pintarFrase(usuarios) {
     <p>Frase aleatoria : ${contenidoFrase}</p>
     </div>
 `;
+}
+
+
+function mostrarHora(){
+
+
+  let ahora = new Date();
+  const contenidoHora = ahora.toLocaleTimeString();
+
+  reloj.innerHTML = `   
+  <div class="card">
+      <p class="reloj">${contenidoHora}</p>
+  </div>
+  `;    
+}
+
+
+function pararReloj() {
+
+  if (intervalo){
+    clearInterval(intervalo);
+    intervalo = null;
+  }else{
+    intervalo = setInterval(mostrarHora, 1000);
+  }
+    
+
+
 }
