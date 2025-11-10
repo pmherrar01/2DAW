@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniProyectoApis</title>
-    <script src="js.js"></script>
+    <script src="js.js" defer></script>
     <link rel="stylesheet" href="css.css">
 </head>
 
-<body >
+<body>
     <div class="contenedor">
-
         <form>
 
             <label for="tipoPrenda">Tipo de prenda:</label>
@@ -41,13 +40,12 @@
             <input type="button" value="Enviar" onclick="anadirPrenda()" class="boton">
             <input type="button" value="Finalizar" onclick="mostrarStock()" class="boton">
             <input type="button" value="Eliminar un producto" onclick="borrarPrenda()" class="boton">
-
+            <input type="button" value="parar reloj/reanudar" onclick="pararReloj()" class="boton">
         </form>
     </div>
     <div id="container"></div>
     <div id="frase"></div>
-    <div id="hora"></div>
-
+    <div id="reloj"></div>
 
 
 

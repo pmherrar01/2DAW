@@ -103,5 +103,7 @@ function convertirMoneda() {
 // Llama a la función para rellenar los <select> en cuanto carga el JS.
 cargarMonedas();
 
+alert("hola");
+
 // 2. Cuando se haga clic en el botón, llama a convertirMoneda()
 btnConvertir.addEventListener('click', convertirMoneda);
