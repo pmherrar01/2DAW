@@ -1,0 +1,17 @@
+#fila1 td { color: teal; }
+#fila2 td { color: red; }
+#fila3 td { color: blue; }
+#fila4 td { color: orange; }
+#fila5 td { color: purple; }
+#fila6 td { color: olive; }
+#fila7 td { color: fuchsia; }
+#fila8 td { color: green; }
+tr td:nth-of-type(2){
+    background-color: red;
+}
+tr td:nth-of-type(3){
+    background-color: green;
+}
+tr td:nth-of-type(4){
+    background-color: blue;
+}
