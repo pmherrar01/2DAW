@@ -199,7 +199,15 @@ function pintarFrase(usuarios) {
 `;
 }
 
-/*comentario par la nueva rama*/ 
+document.getElementById("botonReloj").onclick = function () {
+  
+  if (intervalo){
+    clearInterval(intervalo);
+    intervalo = null;
+  }else{
+    intervalo = setInterval(mostrarHora, 1000);
+  }  
+}
 function mostrarHora(){
 
 
@@ -211,18 +219,4 @@ function mostrarHora(){
       <p class="reloj">${contenidoHora}</p>
   </div>
   `;    
-}
-
-
-function pararReloj() {
-
-  if (intervalo){
-    clearInterval(intervalo);
-    intervalo = null;
-  }else{
-    intervalo = setInterval(mostrarHora, 1000);
-  }
-    
-
-
 }
