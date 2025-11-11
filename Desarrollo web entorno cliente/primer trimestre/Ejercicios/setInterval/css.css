@@ -70,22 +70,20 @@ input[type="range"] {
     margin-left: 10px;
 
   }
-/*div de la frase que quier que este abajo a la derecha*/
+/*div de la frase que quier que este abajo a la izquierda*/
 #frase{
-    margin-top: 30px;
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     display: flex;
     color: black;
-
   }
 
-/*div del reloj que quiero que este abajo a la derecha encima de la frase*/
+/*div del reloj que quiero que este abajo a la derecha debajo de la frase*/
 #reloj {
-    margin: 30px;
+    margin-top: 80px;
     position: absolute;
-    bottom: 80px;
+    bottom: 20px;
     right: 20px;
     display: flex;
     color: black;
