@@ -199,7 +199,7 @@ function pintarFrase(usuarios) {
 `;
 }
 
-
+/*comentario par la nueva rama*/ 
 function mostrarHora(){
 
 
