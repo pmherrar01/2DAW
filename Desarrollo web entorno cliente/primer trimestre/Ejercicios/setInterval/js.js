@@ -167,6 +167,9 @@ function pintarTemperaturaActual(datos, horaActual) {
                 <p>Humedad relativa en dos horas: ${humedadActual} %</p>
             </div>
         `;
+
+        localStorage.setItem('temperaturaActual', temperaturaActual);
+        localStorage.setItem('humedad actual', humedadActual);
 }
 
 fetch(`https://jsonplaceholder.typicode.com/posts`)
@@ -192,6 +195,8 @@ function pintarFrase(usuarios) {
     }
   }
 
+  localStorage.setItem('frase Usuario'+usuarioId, contenidoFrase);
+
   containerFrase.innerHTML = `
     <div class="card">
     <p>Frase aleatoria : ${contenidoFrase}</p>
@@ -208,6 +213,19 @@ document.getElementById("botonReloj").onclick = function () {
     intervalo = setInterval(mostrarHora, 1000);
   }  
 }
+
+document.getElementById("aniadirLocalStorage").onclick = function () {
+  localStorage.setItem('name', 'pablo');
+  localStorage.setItem('age', '25');
+  window.alert('Datos añadidos añadido');
+}
+
+document.getElementById("borrarLocal").onclick = function(){
+  localStorage.clear();
+  window.alert("DAtos borrados");
+}
+
+
 function mostrarHora(){
 
 
