@@ -19,13 +19,14 @@ debes llamarla con estos parámetros:
 
 */
 
-function mayor(): int{
-    $mayor = 0;
+declare(strict_types=1);
+
+function mayor(): int|float|null{
 
     $cantidadParametros = func_num_args();
 
     if($cantidadParametros == 0){
-        return 0;
+        return null;
     }
 
     $numeros = func_get_args();
@@ -41,10 +42,20 @@ function mayor(): int{
     return $mayor;
 }
 
-function concatenar(...$cadenas){
-    $cadenaLimpia = trim($cadenas);
+
+function concatenar(string ...$cadenas): string{
+
+     foreach($cadenas as $key => $value){
+        $cadenas[$key] = trim($value);
+        $cadenas[$key] = ucwords(strtolower($cadenas[$key]));
+
+        }
+
+        return implode("|", $cadenas);
 }
 
 echo "El mayor de (1,3,8,2) es: " .  mayor(1,3,8,2);
+echo "<br>";
+echo concatenar(" hola ", "MUNDO", "eJEMPlo ");   
 
 ?>

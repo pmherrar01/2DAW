@@ -15,8 +15,8 @@ array se reindexará y ordenará.
 Llama a las funciones para hacer todas las pruebas necesarias y mostrar los
 contenidos de los arrays (ya sabéis que implode o print_r es lo más rápido).
  */
-
-function esPar($numero): bool
+declare(strict_types = 1);
+function esPar( int $numero): bool
 {
 
     if ($numero % 2 == 0) {
@@ -26,7 +26,7 @@ function esPar($numero): bool
     }
 }
 
-function arrayAleatorio($cantidad, $maximo = 100, $minimo = 1): array
+function arrayAleatorio(int $cantidad,int $maximo = 100, int $minimo = 1): array
 {
     $aAleatorio = [];
 
@@ -37,7 +37,7 @@ function arrayAleatorio($cantidad, $maximo = 100, $minimo = 1): array
     return $aAleatorio;
 }
 
-function borrarImpares(&$array)
+function borrarImpares(array &$array): void 
 {
     foreach ($array as $key => $num) {
         if (!esPar($num)) {
@@ -53,3 +53,4 @@ $aAleatoro = arrayAleatorio(6);
 borrarImpares($aAleatoro);
 
 echo implode ( "|", $aAleatoro);
+?>
