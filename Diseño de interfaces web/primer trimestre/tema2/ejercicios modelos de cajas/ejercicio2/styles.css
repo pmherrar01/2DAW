@@ -1,0 +1,25 @@
+#divespecial{
+    border: 1px solid red;
+    background-color: gray;
+    margin-top: 10px;
+    width: 200px;
+}
+
+#pespecial{
+    border: 1px solid green;
+    margin-top: 10px;
+    width: 300px;
+}
+
+#otroespecial{
+    border: 1px solid gray;
+    margin-top: 10px;
+    width: 300px;
+    display: block;
+    margin: auto;
+}
+span{
+    background-color: gray;
+    color: white;
+    border: 1px solid black;
+}
