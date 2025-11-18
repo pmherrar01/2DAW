@@ -14,14 +14,14 @@ html, body {
     background-color: green;
     padding: 10px;
     width: 100%;
-    height: 5em;
+    height: 10%;
     margin: 0;
 }
 
 #lateral {
     background-color: yellow;
     width: 20%;
-    height: 20em;
+    height: 80%;
     float: left;
     margin-top: 0;
 }
@@ -29,13 +29,13 @@ html, body {
 #principal {
     background-color: maroon;
     width: 80%;
-    height: 20em;
+    height: 80%;
     float: left;
 }
 
 #pie {
     background-color: red;
     width: 100%;
-    height: 5em;
+    height: 10%;
     float: left;
 }
