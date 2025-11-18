@@ -1,7 +1,17 @@
-//Array para guardar las prendas
-let aStock = [];
+//Array para guardar las prendas que esta inicializado con el localStorage si hay datos
+
+// Forma correcta de copiar todas las claves y valores de localStorage a un objeto plano
+
+
+
+let allData = JSON.parse(localStorage.getItem("prendas")) || [];
+
+let aStock = [allData];
 //variable cont con la que cuento cuantas orendas añado
 let cont = 0;
+
+
+
 /*
     Utilizo esta variable count para contar cuetnas prendas añado de una vez,
     me refiero de de una vex se presiona 2 veces el boton "enviar" pues se añaden 2 prendas de una vez entonces contaria 2,
@@ -12,9 +22,14 @@ const reloj = document.getElementById("reloj");
 
 let intervalo = setInterval(mostrarHora, 1000);
 
+//let vLocal = localStorage.clear();
+
 
 //funcion para añadir una prenda al array
 function anadirPrenda() {
+
+  
+
   let prendaNueva;
 
   if (!validarpPrenda()) {
@@ -34,9 +49,14 @@ function anadirPrenda() {
       alert("La prenda ya existe en el stock");
     } else {
       aStock.push(prendaNueva);
+      local(aStock);
       cont++;
     }
   }
+
+  
+
+  
 }
 
 //funcion para validar que todos los campos esten rellenos
@@ -113,11 +133,14 @@ function borrarPrenda() {
     for (let i = 0; i < aStock.length; i++) {
       if (aStock[i].codigoPrenda == codigoPrendaABorrar) {
         aStock.splice(i, 1);
+        local(aStock);
         alert("Prenda borrada correctamente");
         return;
       }
     }
   }
+
+
 }
 
 //funcion para mostrar
@@ -195,7 +218,7 @@ function pintarFrase(usuarios) {
     }
   }
 
-  localStorage.setItem('frase Usuario'+usuarioId, contenidoFrase);
+  localStorage.setItem('frase Usuario'+ usuarioId, contenidoFrase);
 
   containerFrase.innerHTML = `
     <div class="card">
@@ -214,15 +237,26 @@ document.getElementById("botonReloj").onclick = function () {
   }  
 }
 
-document.getElementById("aniadirLocalStorage").onclick = function () {
-  localStorage.setItem('name', 'pablo');
-  localStorage.setItem('age', '25');
-  window.alert('Datos añadidos añadido');
+document.getElementById("borrarDatos").onclick = function(){
+
+  aStock = [];
+
+  vLocal = localStorage.clear();
+
 }
 
-document.getElementById("borrarLocal").onclick = function(){
-  localStorage.clear();
-  window.alert("DAtos borrados");
+
+
+//document.getElementById("borrarLocal").onclick = function(){
+ // localStorage.clear();
+//  window.alert("DAtos borrados");
+//  }
+
+
+let local = function(aPrendas){
+  
+  localStorage.setItem("prendas", JSON.stringify(aPrendas));
+
 }
 
 
