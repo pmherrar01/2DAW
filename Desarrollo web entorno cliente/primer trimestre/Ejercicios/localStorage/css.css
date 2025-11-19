@@ -82,6 +82,7 @@ input[type="range"] {
 /*div del reloj que quiero que este abajo a la derecha debajo de la frase*/
 #reloj {
     margin-top: 80px;
+    
     position: absolute;
     bottom: 20px;
     right: 20px;

@@ -10,13 +10,13 @@ if (datosLocal) {
   }
 }
 
+//let fontSize = "30px";
+
 // Si hay datos válidos los usamos (haciendo una copia), si no empezamos con array vacío
 let aStock = allData ? allData.slice() : [];
 // ...existing code...
 //variable cont con la que cuento cuantas orendas añado
 let cont = 0;
-
-
 
 /*
     Utilizo esta variable count para contar cuetnas prendas añado de una vez,
@@ -30,12 +30,8 @@ let intervalo = setInterval(mostrarHora, 1000);
 
 //let vLocal = localStorage.clear();
 
-
 //funcion para añadir una prenda al array
 function anadirPrenda() {
-
-  
-
   let prendaNueva;
 
   if (!validarpPrenda()) {
@@ -59,10 +55,6 @@ function anadirPrenda() {
       cont++;
     }
   }
-
-  
-
-  
 }
 
 //funcion para validar que todos los campos esten rellenos
@@ -128,8 +120,8 @@ function prendaExiste(prendaBuscar) {
 
 //funcion para borrar una prenda del array
 function borrarPrenda() {
-
-  let codigoPrendaABorrar = prompt( mostrarStock(),
+  let codigoPrendaABorrar = prompt(
+    mostrarStock(),
     "Introduce el codigo de la prenda a borrar:"
   );
 
@@ -145,8 +137,6 @@ function borrarPrenda() {
       }
     }
   }
-
-
 }
 
 //funcion para mostrar
@@ -155,14 +145,8 @@ function mostrarStock() {
 
   let mensaje = `Mostarndo el stock ordenado por precio\n`;
 
-  for (let i = 0; i < aStockOrdenado.length; i++ ) {
-    mensaje += `\n Codigo prenda ${aStockOrdenado[i].codigoPrenda}:   ${
-      aStockOrdenado[i].tipoPrenda
-    } \n Descipcion: ${aStockOrdenado[i].descripcion} \nPrecio: ${
-      aStockOrdenado[i].precio
-    } \nFecha de salida: ${
-      aStockOrdenado[i].fechaSalida
-    } \n¿Tiene tara?: ${aStockOrdenado[i].tara}\n`;
+  for (let i = 0; i < aStockOrdenado.length; i++) {
+    mensaje += `\n Codigo prenda ${aStockOrdenado[i].codigoPrenda}:   ${aStockOrdenado[i].tipoPrenda} \n Descipcion: ${aStockOrdenado[i].descripcion} \nPrecio: ${aStockOrdenado[i].precio} \nFecha de salida: ${aStockOrdenado[i].fechaSalida} \n¿Tiene tara?: ${aStockOrdenado[i].tara}\n`;
   }
 
   alert(mensaje);
@@ -197,8 +181,8 @@ function pintarTemperaturaActual(datos, horaActual) {
             </div>
         `;
 
-        localStorage.setItem('temperaturaActual', temperaturaActual);
-        localStorage.setItem('humedad actual', humedadActual);
+  localStorage.setItem("temperaturaActual", temperaturaActual);
+  localStorage.setItem("humedad actual", humedadActual);
 }
 
 fetch(`https://jsonplaceholder.typicode.com/posts`)
@@ -207,8 +191,6 @@ fetch(`https://jsonplaceholder.typicode.com/posts`)
     // const aUsuarios = json;
     pintarFrase(json);
   });
-
-
 
 function pintarFrase(usuarios) {
   const containerFrase = document.getElementById("frase");
@@ -219,12 +201,12 @@ function pintarFrase(usuarios) {
 
   for (let i = 0; i < usuarios.length; i++) {
     if (usuarios[i].userId === usuarioId && usuarios[i].id === idFrase) {
-      contenidoFrase =  usuarios[i].body;
+      contenidoFrase = usuarios[i].body;
       break;
     }
   }
 
-  localStorage.setItem('frase Usuario'+ usuarioId, contenidoFrase);
+  localStorage.setItem("frase Usuario" + usuarioId, contenidoFrase);
 
   containerFrase.innerHTML = `
     <div class="card">
@@ -234,51 +216,51 @@ function pintarFrase(usuarios) {
 }
 
 document.getElementById("botonReloj").onclick = function () {
-  
-  if (intervalo){
+  contenidoBotonReloj = document.getElementById("botonReloj");
+
+  if (intervalo) {
     clearInterval(intervalo);
     intervalo = null;
-  }else{
+    //fontSize = "10px";
+  } else {
     intervalo = setInterval(mostrarHora, 1000);
-  }  
-}
 
-document.getElementById("borrarDatos").onclick = function(){
+    //fontSize = "30px";
+  }
 
+  intervalo
+    ? (contenidoBotonReloj.value = "parar reloj")
+    : (contenidoBotonReloj.value = "reanudar reloj");
+};
+
+document.getElementById("borrarDatos").onclick = function () {
   aStock = [];
 
   vLocal = localStorage.clear();
-
-}
-
-
+};
 
 //document.getElementById("borrarLocal").onclick = function(){
- // localStorage.clear();
+// localStorage.clear();
 //  window.alert("DAtos borrados");
 //  }
 
-
-let local = function(aPrendas){
-  
+let local = function (aPrendas) {
   localStorage.setItem("prendas", JSON.stringify(aPrendas));
+};
 
-}
-
-let color = function(){
+let color = function () {
   return document.getElementById("colores").value;
-}
+};
 
-
-function mostrarHora(){
-
-
+function mostrarHora() {
   let ahora = new Date();
   const contenidoHora = ahora.toLocaleTimeString();
 
+  const fontSize = intervalo ? "30px" : "10px";
+
   reloj.innerHTML = `   
   <div class="card">
-      <p class="reloj" style="color: ${color()};">${contenidoHora}</p>
+      <p class="reloj" style="color: ${color()}; font-size: ${fontSize}; ">${contenidoHora}</p>
   </div>
-  `;    
+  `;
 }
