@@ -4,13 +4,18 @@ let datosLocal = localStorage.getItem("prendas");
 let allData;
 if (datosLocal) {
   try {
-    allData = JSON.parse(stored);
+    allData = JSON.parse(datosLocal);
   } catch (e) {
     allData = undefined;
   }
 }
 
-//let fontSize = "30px";
+ const colorGuardado = localStorage.getItem("clockColor");
+
+if (colorGuardado) {
+  document.getElementById("colores").value = colorGuardado;
+}
+
 
 // Si hay datos válidos los usamos (haciendo una copia), si no empezamos con array vacío
 let aStock = allData ? allData.slice() : [];
@@ -216,16 +221,21 @@ function pintarFrase(usuarios) {
 }
 
 document.getElementById("botonReloj").onclick = function () {
-  contenidoBotonReloj = document.getElementById("botonReloj");
+  const parrafo = reloj.querySelector('.reloj');
+  const contenidoBotonReloj = document.getElementById("botonReloj");
 
   if (intervalo) {
     clearInterval(intervalo);
     intervalo = null;
-    //fontSize = "10px";
+    parrafo.style.color=colorGuardado;
+    parrafo.style.fontSize = "10px";
+    parrafo.style.color = color();
+
   } else {
     intervalo = setInterval(mostrarHora, 1000);
-
-    //fontSize = "30px";
+    parrafo.style.color=colorGuardado;
+    parrafo.style.fontSize = "30px";
+    parrafo.style.color = color();
   }
 
   intervalo
@@ -248,19 +258,44 @@ let local = function (aPrendas) {
   localStorage.setItem("prendas", JSON.stringify(aPrendas));
 };
 
+
+document.getElementById("colores").onchange = function () {
+  // 1. Guardamos en localStorage
+  localStorage.setItem("clockColor", this.value);
+  
+  // 2. Actualizamos el reloj visualmente YA MISMO (sin esperar al siguiente segundo)
+  const parrafo = document.getElementById("reloj").querySelector('.reloj');
+  if (parrafo) {
+    parrafo.style.color = this.value;
+  }
+};
+
 let color = function () {
-  return document.getElementById("colores").value;
+
+  return document.getElementById("colores").value;;
 };
 
 function mostrarHora() {
+
   let ahora = new Date();
   const contenidoHora = ahora.toLocaleTimeString();
 
-  const fontSize = intervalo ? "30px" : "10px";
+  
+  const parrafo = reloj.querySelector('.reloj');
 
-  reloj.innerHTML = `   
-  <div class="card">
-      <p class="reloj" style="color: ${color()}; font-size: ${fontSize}; ">${contenidoHora}</p>
-  </div>
-  `;
+  if (!parrafo) {
+    reloj.innerHTML = `   
+    <div class="card">
+      <p class="reloj" style="font-size: 30px; color: ${color()} ">${contenidoHora}</p>
+    </div>
+    `;
+  }else{
+    parrafo.textContent = contenidoHora;
+    parrafo.style.color = color();
+  }
+
+  
+  //  const fontSize = (intervalo) ? "30px" : "10px";
+
+
 }
