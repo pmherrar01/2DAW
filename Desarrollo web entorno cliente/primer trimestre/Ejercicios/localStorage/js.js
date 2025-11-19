@@ -1,12 +1,18 @@
 //Array para guardar las prendas que esta inicializado con el localStorage si hay datos
 
-// Forma correcta de copiar todas las claves y valores de localStorage a un objeto plano
+let datosLocal = localStorage.getItem("prendas");
+let allData;
+if (datosLocal) {
+  try {
+    allData = JSON.parse(stored);
+  } catch (e) {
+    allData = undefined;
+  }
+}
 
-
-
-let allData = JSON.parse(localStorage.getItem("prendas")) || [];
-
-let aStock = [allData];
+// Si hay datos válidos los usamos (haciendo una copia), si no empezamos con array vacío
+let aStock = allData ? allData.slice() : [];
+// ...existing code...
 //variable cont con la que cuento cuantas orendas añado
 let cont = 0;
 
@@ -259,6 +265,10 @@ let local = function(aPrendas){
 
 }
 
+let color = function(){
+  return document.getElementById("colores").value;
+}
+
 
 function mostrarHora(){
 
@@ -268,7 +278,7 @@ function mostrarHora(){
 
   reloj.innerHTML = `   
   <div class="card">
-      <p class="reloj">${contenidoHora}</p>
+      <p class="reloj" style="color: ${color()};">${contenidoHora}</p>
   </div>
   `;    
 }
