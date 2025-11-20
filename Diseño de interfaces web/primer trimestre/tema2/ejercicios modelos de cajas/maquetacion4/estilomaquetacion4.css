@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#central{
+    width: 80%;
+    height: 50%;
+
+}
+
+p{
+    margin-top: 10%;
+}
+
+#cabecera{
+    background-color: red;
+    width: 100%;
+    height: 20%;
+    
+}
+#pie{
+    background-color: green;
+    text-align: center;
+    width: 100%;
+    height: 10%;
+}
+
+ul{
+    margin: 20%;
+    font-size: 30px;
+}
+
+#lateral{
+    background-color: grey;
+    float: right;
+    width: 20%;
+    height: 30%;
+}
+

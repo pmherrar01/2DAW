@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+
+#container{
+    margin: 0 auto;
+    width: 80%;
+    height: 70%;
+}
+
+#cabecera{
+    background-color: red;
+    width: 100%;
+    height: 40%;
+
+}
+
+#lateral{
+    background-color: yellow;
+    float: left;
+    width: 20%;
+    height: 40%;
+}
+
+#principal{
+    background-color: gray;
+    height: 40%;
+    width: 60%;
+    margin: 0 auto;
+
+}
+#lateralderecho{
+    background-color:blueviolet;
+    height: 40%;
+    width: 20%;
+    float: right;
+}
+
+#pie{
+    background-color: aqua;
+    margin-top: 2%;
+    height: 20%;
+    width: 100%;
+}
