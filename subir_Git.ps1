@@ -1,22 +1,33 @@
-# Limpia la pantalla para empezar limpio
+# Forzar codificación UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+# Limpia la pantalla
 Clear-Host
 
 Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host "   GESTOR DE SUBIDAS A GIT (MEJORADO)     " -ForegroundColor Cyan
+Write-Host "   GESTOR DE SUBIDAS A GIT (CORREGIDO)    " -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
 Write-Host ""
 
-# 1. COMPROBACIÓN DE SEGURIDAD: ¿Es esto un repo de git?
-if (-not (Test-Path ".git")) {
-    Write-Host "ERROR CRÍTICO: No se detecta la carpeta .git en este directorio." -ForegroundColor Red
-    Write-Host "Asegúrate de estar en la raíz de tu proyecto." -ForegroundColor Yellow
+# 1. BÚSQUEDA INTELIGENTE DE LA RAÍZ GIT
+# Preguntamos a Git dónde está la carpeta raíz (silenciando errores con 2>$null)
+$gitRoot = git rev-parse --show-toplevel 2>$null
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "ERROR CRÍTICO: No estás dentro de un repositorio Git." -ForegroundColor Red
+    Write-Host "Asegúrate de haber hecho 'git init' o de estar en la carpeta correcta." -ForegroundColor Yellow
     Read-Host "Presiona Enter para salir"
     exit
 }
 
-# 2. COMPROBACIÓN: ¿Hay cambios pendientes?
+# Nos movemos a la raíz
+Set-Location $gitRoot
+Write-Host "✅ Repositorio detectado en: $gitRoot" -ForegroundColor DarkGray
+
+# 2. COMPROBACIÓN DE CAMBIOS (Aquí estaba el error, ya corregido)
 $status = git status --porcelain
-if (-null -eq $status -or $status -eq "") {
+# CORRECCIÓN: Usamos $null en vez de -null
+if ($null -eq $status -or $status -eq "") {
     Write-Host "¡OJO! No hay cambios pendientes para subir." -ForegroundColor Yellow
     Read-Host "Presiona Enter para salir"
     exit
@@ -26,13 +37,12 @@ if (-null -eq $status -or $status -eq "") {
 Write-Host "1. Agregando archivos al staging..." -ForegroundColor Green
 git add .
 
-# Verificamos si el comando anterior funcionó correctamente
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Error al agregar archivos via 'git add'. Revisar permisos." -ForegroundColor Red
+    Write-Host "Error al agregar archivos. Revisar permisos." -ForegroundColor Red
     exit
 }
 
-# 4. MENSAJE DEL COMMIT (Con validación)
+# 4. MENSAJE DEL COMMIT
 do {
     $comentario = Read-Host "2. Escribe el mensaje del commit (Obligatorio)"
     if ([string]::IsNullOrWhiteSpace($comentario)) {
@@ -43,12 +53,11 @@ do {
 Write-Host "   Haciendo commit..." -ForegroundColor Gray
 git commit -m "$comentario"
 
-# 5. GESTIÓN DE RAMA (Inteligente)
-# Detectamos la rama actual automáticamente para evitar errores humanos
+# 5. GESTIÓN DE RAMA AUTOMÁTICA
 $ramaActual = git rev-parse --abbrev-ref HEAD
-Write-Host "   Estás actualmente en la rama: '$ramaActual'" -ForegroundColor Magenta
+Write-Host "   Estás en la rama: '$ramaActual'" -ForegroundColor Magenta
 
-$inputRama = Read-Host "3. ¿A qué rama subir? (Presiona ENTER para usar '$ramaActual')"
+$inputRama = Read-Host "3. ¿A qué rama subir? (Enter para usar '$ramaActual')"
 
 if ([string]::IsNullOrWhiteSpace($inputRama)) {
     $NombreRama = $ramaActual
@@ -60,14 +69,13 @@ if ([string]::IsNullOrWhiteSpace($inputRama)) {
 Write-Host "   Subiendo cambios a 'origin/$NombreRama'..." -ForegroundColor Green
 git push origin $NombreRama
 
-# Comprobamos si el push fue exitoso (por ejemplo, si falla por falta de 'git pull' previo)
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""
-    Write-Host "✅ ¡ÉXITO! Los cambios se han subido correctamente." -ForegroundColor Cyan
+    Write-Host "✅ ¡ÉXITO! Todo subido correctamente." -ForegroundColor Cyan
 } else {
     Write-Host ""
     Write-Host "❌ ERROR EN EL PUSH." -ForegroundColor Red
-    Write-Host "Es posible que necesites hacer un 'git pull' primero o que no tengas permisos." -ForegroundColor Yellow
+    Write-Host "Intenta hacer un 'git pull' primero." -ForegroundColor Yellow
 }
 
 Write-Host ""
