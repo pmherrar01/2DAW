@@ -286,8 +286,8 @@ function mostrarHora() {
 function pintarTemperaturaActual(datos, horaActual) {
   const container = document.getElementById("container");
 
-  const temperaturaActual = datos.temperature_2m[horaActual + 2];
-  const humedadActual = datos.relative_humidity_2m[horaActual + 2];
+  const temperaturaActual = datos.temperature_2m[horaActual];
+  const humedadActual = datos.relative_humidity_2m[horaActual];
 
   container.innerHTML = `
             <div class="card">
@@ -322,3 +322,7 @@ function pintarFrase(usuarios) {
     </div>
 `;
 }
+
+
+//cambio para probar el script nuevo
+
