@@ -1,97 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MiniProyectoApis</title>
-    <script src="js.js" defer></script>
-    <link rel="stylesheet" href="css.css" />
-  </head>
 
-  <body>
-    <div class="contenedor">
-      <form>
-        <label for="tipoPrenda">Tipo de prenda:</label>
-        <select name="tipoPrenda" id="tipoPrenda">
-          <option value="" disabled selected>Selecciona una opcion</option>
-          <option value="camiseta">Camiseta</option>
-          <option value="pantalon">Pantalón</option>
-          <option value="chaqueta">Chaqueta</option>
-          <option value="sudadera">Sudadera</option></select
-        ><br /><br />
-        <label for="descripcion">Descripcion de la prenda:</label><br />
-        <input
-          type="text"
-          id="descripcion"
-          name="descripcion"
-          maxlength="30"
-        /><br />
-        <br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniProyectoApis</title>
+  <script src="js.js" defer></script>
+  <link rel="stylesheet" href="css.css" />
+</head>
 
-        <label for="precio">Precio: </label>
-        <span id="precioTexto">50</span>
-        <input
-          type="range"
-          id="precio"
-          min="3"
-          max="200"
-          value="50"
-          oninput="document.getElementById('precioTexto').textContent=this.value"
-        /><br /><br />
-        <label for="fechaSalida">Fecha de salida:</label><br />
-        <input type="date" id="fechaSalida" name="fechaSalida" /><br /><br />
-        <label>Tara:</label><br />
+<body>
+  <div class="contenedor">
+    <form>
+      <label for="tipoPrenda">Tipo de prenda:</label>
+      <select name="tipoPrenda" id="tipoPrenda">
+        <option value="" disabled selected>Selecciona una opcion</option>
+        <option value="camiseta">Camiseta</option>
+        <option value="pantalon">Pantalón</option>
+        <option value="chaqueta">Chaqueta</option>
+        <option value="sudadera">Sudadera</option>
+      </select><br /><br />
+      <label for="descripcion">Descripcion de la prenda:</label><br />
+      <input type="text" id="descripcion" name="descripcion" maxlength="30" /><br />
+      <br />
 
-        <input type="radio" id="tara_si" name="tara" value="true" />
-        <label for="tara_si">Sí</label><br />
-        <input type="radio" id="tara_no" name="tara" value="false" />
-        <label for="tara_no">No</label><br /><br />
+      <label for="precio">Precio: </label>
+      <span id="precioTexto">50</span>
+      <input type="range" id="precio" min="3" max="200" value="50"
+        oninput="document.getElementById('precioTexto').textContent=this.value" /><br /><br />
+      <label for="fechaSalida">Fecha de salida:</label><br />
+      <input type="date" id="fechaSalida" name="fechaSalida" /><br /><br />
+      <label>Tara:</label><br />
 
-        <input
-          type="button"
-          value="Añadir"
-          onclick="anadirPrenda()"
-          id="añadirPrenda"
-          class="boton"
-        />
-        <input
-          type="button"
-          value="Borrar datos"
-          id="borrarDatos"
-          class="boton"
-        />
-        <input
-          type="button"
-          value="Mostrar Datos"
-          onclick="mostrarStock()"
-          class="boton"
-        />
-        <input
-          type="button"
-          value="Eliminar un producto"
-          onclick="borrarPrenda()"
-          class="boton"
-        />
-        <input
-          type="button"
-          value="parar reloj"
-          class="boton"
-          id="botonReloj"
-        />
+      <input type="radio" id="tara_si" name="tara" value="true" />
+      <label for="tara_si">Sí</label><br />
+      <input type="radio" id="tara_no" name="tara" value="false" />
+      <label for="tara_no">No</label><br /><br />
 
-        <select name="colores" id="colores" class="boton">
-          <option value="" disabled selected>Cambiar color reloj</option>
-          <option value="red">rojo</option>
-          <option value="blue">azul</option>
-          <option value="green">verde</option>
-          <option value="yellow">amarillo</option>
-          <option value="brown">marrron</option>
-        </select>
-      </form>
+      <input type="button" value="Añadir" onclick="anadirPrenda()" id="añadirPrenda" class="boton" />
+      <input type="button" value="Borrar datos" id="borrarDatos" class="boton" />
+      <input type="button" value="Mostrar Datos" onclick="mostrarStock()" class="boton" />
+      <input type="button" value="Eliminar un producto" onclick="borrarPrenda()" class="boton" />
+      <input type="button" value="parar reloj" class="boton" id="botonReloj" />
+
+      <select name="colores" id="colores" class="boton">
+        <option value="" disabled selected>Cambiar color reloj</option>
+        <option value="red">rojo</option>
+        <option value="blue">azul</option>
+        <option value="green">verde</option>
+        <option value="yellow">amarillo</option>
+        <option value="brown">marrron</option>
+      </select>
+    </form>
+    <div id="visualStock">
+      <table border="1">
+        <thead>
+          <tr>
+            <th> Codigo Prenda </th>
+            <th> Tipo Prenda </th>
+            <th> Descripcion </th>
+            <th> Precio </th>
+            <th> Fecha Salida </th>
+            <th> Tiene Tara </th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpoTabla">
+        </tbody>
+      </table>
     </div>
-    <div id="container"></div>
+  </div>
+  <div id="frase"></div>
+  <div id="container"></div>
 
-    <div id="reloj"></div>
-    <div id="frase"></div>
-  </body>
+  <div id="reloj"></div>
+</body>
+
 </html>

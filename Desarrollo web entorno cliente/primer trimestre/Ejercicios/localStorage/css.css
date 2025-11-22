@@ -11,7 +11,7 @@ body {
 
 /*clase cointenedor que dentro va a tener el formulario que esta en el centro de la pagina, una pequeña sombra y difuminado el centro*/
 .contenedor {
-    width: 400px;
+    width: 600px;
     padding: 20px;
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
@@ -19,6 +19,30 @@ body {
     backdrop-filter: blur(20px); 
     text-align: center;
 }
+
+
+#visualStock {
+    margin-top: 20px;
+}
+
+#visualStock table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#visualStock th {
+    padding: 10px;
+    background-color: #fff023;
+    color: black;
+    border-radius: 8px;
+}
+
+#visualStock td {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}  
 
 input[type="range"] {
 
@@ -54,12 +78,13 @@ input[type="range"] {
 
 /*Estilos para la temperatura que es un div que se pone arriba a la derecha  */
 #container{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    color: black;
-  }
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        color: black;
+        
+    }
 
   .card{
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
@@ -70,14 +95,16 @@ input[type="range"] {
     margin-left: 10px;
 
   }
-/*div de la frase que quier que este abajo a la izquierda*/
+/*div de la frase: arriba a la izquierda, con ancho limitado para evitar solapamientos*/
 #frase{
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    color: black;
-  }
+        position: absolute;
+        top: 20px;
+        left: 20px; 
+        max-width: 300px; 
+        display: flex;
+        color: black;
+
+    }
 
 /*div del reloj que quiero que este abajo a la derecha debajo de la frase*/
 #reloj {

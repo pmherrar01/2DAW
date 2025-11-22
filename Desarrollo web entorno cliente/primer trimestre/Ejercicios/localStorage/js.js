@@ -2,6 +2,9 @@
 // 1. VARIABLES GLOBALES Y ESTADO INICIAL
 // ==========================================
 
+
+
+
 // --- Gestión de Stock LocalStorage ---
 let datosLocal = localStorage.getItem("prendas");
 let allData;
@@ -15,6 +18,12 @@ if (datosLocal) {
 
 // Si hay datos válidos los usamos (haciendo una copia), si no empezamos con array vacío
 let aStock = allData ? allData.slice() : [];
+
+
+//mostrar el stock visualmente en la tabla
+//llamo a la funcion para que se muestre al cargar la pagina
+mostrarVisualStock();
+
 
 // --- Contadores y Elementos DOM ---
 //variable cont con la que cuento cuantas orendas añado
@@ -32,7 +41,7 @@ if (colorGuardado) {
 const latitude = 39.4765;
 const longitude = -6.3722;
 
-// ...existing code...
+
 
 // ==========================================
 // 2. FUNCIONES UTILITARIAS (EXPRESIONES)
@@ -57,13 +66,13 @@ document.getElementById("botonReloj").onclick = function () {
   if (intervalo) {
     clearInterval(intervalo);
     intervalo = null;
-    parrafo.style.color=colorGuardado;
+    parrafo.style.color = colorGuardado;
     parrafo.style.fontSize = "10px";
     parrafo.style.color = color();
 
   } else {
     intervalo = setInterval(mostrarHora, 1000);
-    parrafo.style.color=colorGuardado;
+    parrafo.style.color = colorGuardado;
     parrafo.style.fontSize = "30px";
     parrafo.style.color = color();
   }
@@ -76,6 +85,8 @@ document.getElementById("botonReloj").onclick = function () {
 document.getElementById("borrarDatos").onclick = function () {
   aStock = [];
   vLocal = localStorage.clear();
+
+  mostrarVisualStock();
 };
 
 //document.getElementById("borrarLocal").onclick = function(){
@@ -86,7 +97,7 @@ document.getElementById("borrarDatos").onclick = function () {
 document.getElementById("colores").onchange = function () {
   // 1. Guardamos en localStorage
   localStorage.setItem("clockColor", this.value);
-  
+
   // 2. Actualizamos el reloj visualmente YA MISMO (sin esperar al siguiente segundo)
   const parrafo = document.getElementById("reloj").querySelector('.reloj');
   if (parrafo) {
@@ -147,6 +158,8 @@ function anadirPrenda() {
       aStock.push(prendaNueva);
       local(aStock);
       cont++;
+
+      mostrarVisualStock();
     }
   }
 }
@@ -265,7 +278,7 @@ function mostrarHora() {
   let ahora = new Date();
   const contenidoHora = ahora.toLocaleTimeString();
 
-  
+
   const parrafo = reloj.querySelector('.reloj');
 
   if (!parrafo) {
@@ -274,20 +287,20 @@ function mostrarHora() {
       <p class="reloj" style="font-size: 30px; color: ${color()} ">${contenidoHora}</p>
     </div>
     `;
-  }else{
+  } else {
     parrafo.textContent = contenidoHora;
     parrafo.style.color = color();
   }
 
-  
+
   //  const fontSize = (intervalo) ? "30px" : "10px";
 }
 
 function pintarTemperaturaActual(datos, horaActual) {
   const container = document.getElementById("container");
 
-  const temperaturaActual = datos.temperature_2m[horaActual];
-  const humedadActual = datos.relative_humidity_2m[horaActual];
+  const temperaturaActual = datos.temperature_2m[horaActual] + 2;
+  const humedadActual = datos.relative_humidity_2m[horaActual] + 2;
 
   container.innerHTML = `
             <div class="card">
@@ -321,6 +334,29 @@ function pintarFrase(usuarios) {
     <p>Frase aleatoria : ${contenidoFrase}</p>
     </div>
 `;
+}
+
+
+function mostrarVisualStock() {
+
+  const cuerpoTabla = document.getElementById("cuerpoTabla");
+
+  let contenidoVisual = "";
+
+  aStock.forEach(prenda => {
+    contenidoVisual += `
+    <tr>
+      <td>${prenda.codigoPrenda}</td>
+      <td>${prenda.tipoPrenda}</td>
+      <td>${prenda.descripcion}</td>
+      <td>${prenda.precio}</td>
+      <td>${prenda.fechaSalida}</td>
+      <td>${prenda.tara}</td> 
+    </tr>
+    `;
+  });
+
+  cuerpoTabla.innerHTML = contenidoVisual;
 }
 
 
