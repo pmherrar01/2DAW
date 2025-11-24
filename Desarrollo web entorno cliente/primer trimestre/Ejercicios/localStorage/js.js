@@ -27,8 +27,25 @@ mostrarVisualStock();
 
 // --- Contadores y Elementos DOM ---
 //variable cont con la que cuento cuantas orendas añado
+//--RELOJ--
 let cont = 0;
 const reloj = document.getElementById("reloj");
+const parrafoReloj = reloj.querySelector('.reloj');
+const contenidoBotonReloj = document.getElementById("botonReloj");
+const parrafoColorReloj = document.getElementById("reloj").querySelector('.reloj');
+const horaActual = new Date().getHours();
+//const ahora = new Date();
+//const contenidoHora = ahora.toLocaleTimeString();
+
+
+//prendas
+const tipoPrenda = document.getElementById("tipoPrenda");
+const descripcion = document.getElementById("descripcion");
+const precio = document.getElementById("precio");
+const fechaSalida = document.getElementById("fechaSalida");
+
+
+
 
 // --- Configuración Inicial de Color ---
 const colorGuardado = localStorage.getItem("clockColor");
@@ -60,21 +77,23 @@ let color = function () {
 // ==========================================
 
 document.getElementById("botonReloj").onclick = function () {
-  const parrafo = reloj.querySelector('.reloj');
-  const contenidoBotonReloj = document.getElementById("botonReloj");
+
+const parrafoActual = reloj.querySelector('.reloj');
 
   if (intervalo) {
     clearInterval(intervalo);
     intervalo = null;
-    parrafo.style.color = colorGuardado;
-    parrafo.style.fontSize = "10px";
-    parrafo.style.color = color();
 
+    if (parrafoActual) {
+      parrafoActual.style.fontSize = "10px";
+      parrafoActual.style.color = color(); // Mantenemos el color seleccionado
+  }
   } else {
     intervalo = setInterval(mostrarHora, 1000);
-    parrafo.style.color = colorGuardado;
-    parrafo.style.fontSize = "30px";
-    parrafo.style.color = color();
+    if (parrafoActual) {
+      parrafoActual.style.fontSize = "30px";
+      parrafoActual.style.color = color();
+  }
   }
 
   intervalo
@@ -84,24 +103,19 @@ document.getElementById("botonReloj").onclick = function () {
 
 document.getElementById("borrarDatos").onclick = function () {
   aStock = [];
-  vLocal = localStorage.clear();
+  local = localStorage.clear();
 
   mostrarVisualStock();
 };
-
-//document.getElementById("borrarLocal").onclick = function(){
-// localStorage.clear();
-//  window.alert("DAtos borrados");
-//  }
 
 document.getElementById("colores").onchange = function () {
   // 1. Guardamos en localStorage
   localStorage.setItem("clockColor", this.value);
 
   // 2. Actualizamos el reloj visualmente YA MISMO (sin esperar al siguiente segundo)
-  const parrafo = document.getElementById("reloj").querySelector('.reloj');
-  if (parrafo) {
-    parrafo.style.color = this.value;
+
+  if (parrafoColorReloj) {
+    parrafoColorReloj.style.color = this.value;
   }
 };
 
@@ -118,7 +132,6 @@ fetch(
 )
   .then((response) => response.json())
   .then((json) => {
-    const horaActual = new Date().getHours();
     const datos = json.hourly;
     pintarTemperaturaActual(datos, horaActual);
   });
@@ -144,10 +157,10 @@ function anadirPrenda() {
   } else {
     prendaNueva = datosPrenda(
       Math.floor(Math.random() * 100000),
-      document.getElementById("tipoPrenda").value,
-      document.getElementById("descripcion").value,
-      document.getElementById("precio").value,
-      document.getElementById("fechaSalida").value,
+     tipoPrenda.value,
+      descripcion.value,
+      parseFloat(precio.value),
+      fechaSalida.value,
       document.querySelector('input[name="tara"]:checked').value === "true"
         ? true
         : false
@@ -166,11 +179,11 @@ function anadirPrenda() {
 
 //funcion para validar que todos los campos esten rellenos
 function validarpPrenda() {
-  let tipoPrenda = document.getElementById("tipoPrenda").value;
-  let descripcion = document.getElementById("descripcion").value;
-  let precio = document.getElementById("precio").value;
-  let fechaSalida = document.getElementById("fechaSalida").value;
-  let tara = document.querySelector('input[name="tara"]:checked');
+   tipoPrenda.value;
+   descripcion.value;
+   precio.value;
+   fechaSalida.value;
+   const tara = document.querySelector('input[name="tara"]:checked');
 
   if (
     tipoPrenda === "" ||
@@ -241,6 +254,7 @@ function borrarPrenda() {
         aStock.splice(i, 1);
         local(aStock);
         alert("Prenda borrada correctamente");
+        mostrarVisualStock();
         return;
       }
     }
@@ -275,9 +289,8 @@ function mostrarStock() {
 
 function mostrarHora() {
 
-  let ahora = new Date();
-  const contenidoHora = ahora.toLocaleTimeString();
-
+  let horaActual = new Date();
+  let contenidoHora = horaActual.toLocaleTimeString();
 
   const parrafo = reloj.querySelector('.reloj');
 
@@ -344,7 +357,7 @@ function mostrarVisualStock() {
   let contenidoVisual = "";
 
   aStock.forEach(prenda => {
-    contenidoVisual += `
+    contenidoVisual  += `
     <tr>
       <td>${prenda.codigoPrenda}</td>
       <td>${prenda.tipoPrenda}</td>
