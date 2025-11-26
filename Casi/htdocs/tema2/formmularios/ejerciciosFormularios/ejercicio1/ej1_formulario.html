@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Formulario</title>
+</head>
+<body>
+
+    <h1>Formulario de Registro</h1>
+
+    <form action="ej1_Formulario.php" method="get">
+
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" ><br><br>
+
+        <label for="apellidos">Apellidos</label><br>
+        <input type="text" id="apellidos" name="apellidos" ><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" ><br><br>
+
+        <label for="url">URL página personal:</label><br>
+        <input type="url" id="url" name="url"><br><br>
+
+        <label>Sexo:</label><br>
+        <input type="radio" id="hombre" name="sexo" value="hombre">
+        <label for="hombre">Hombre</label>
+        <input type="radio" id="mujer" name="sexo" value="mujer">
+        <label for="mujer">Mujer</label><br><br>
+
+        <label for="convivientes">Número de convivientes en el domicilio:</label><br>
+        <input type="number" id="convivientes" name="convivientes"><br><br>
+
+        <label>Aficiones:</label><br>
+        <input type="checkbox" id="aficion1" name="aficiones[]" value="deporte">
+        <label for="aficion1">Deporte</label><br>
+        <input type="checkbox" id="aficion2" name="aficiones[]" value="programar">
+        <label for="aficion2">Programar</label><br>
+        <input type="checkbox" id="aficion3" name="aficiones[]" value="cine">
+        <label for="aficion3">Cine</label><br>
+        <input type="checkbox" id="aficion4" name="aficiones[]" value="viajar">
+        <label for="aficion4">Viajar</label><br><br>
+
+        <label for="estudios">Estudios actuales:</label><br>
+        <select id="estudios" name="estudios">
+            <option value="" selected>-- Selecciona una opción --</option>
+            <option value="ESO">ESO</option>
+            <option value="Bachillerato">Bachillerato</option>
+            <option value="FPGM_SMR">FPGM SMR</option>
+            <option value="FPGS_ASIR">FPGS ASIR</option>
+            <option value="FPGS_DAW">FPGS DAW</option>
+            <option value="FPGS_DAM">FPGS DAM</option>
+        </select><br><br>
+
+        <label for="lenguajes">Lenguajes de programación (Selección múltiple):</label><br>
+        <select id="lenguajes" name="lenguajes[]" multiple size="5">
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="php">PHP</option>
+            <option value="csharp">C#</option>
+        </select><br><br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</body>
+</html>
