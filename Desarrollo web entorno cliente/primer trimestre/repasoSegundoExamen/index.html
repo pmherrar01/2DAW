@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js.js" defer></script>
+    <title>Repaso Examen "</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="titulo">Tiulo:</label>
+      <input type="text" name="titulo" id="titulo" /><br />
+      <label for="consola">Consola</label>
+      <select name="tipoConsola" id="tipoConsola">
+        <option value="" selected>--Selecciona una opcion--</option>
+        <option value="GameBoy">GameBoy</option>
+        <option value="PS1">PS1</option>
+        <option value="N64">N64</option>
+        <option value="Sega">Sega</option></select
+      ><br />
+      <label for="precio">Precio: </label>
+      <span id="precioTexto">Seleccionar...</span>
+
+      <input
+        type="range"
+        id="precio"
+        min="0"
+        max="200"
+        value="0"
+        oninput="document.getElementById('precioTexto').textContent = (this.value == 0) ? 'Seleccionar...' : this.value + ' €'"
+      />
+      <br /><br />
+      <label for="estado">Estado:</label><br />
+      <input type="radio" name="estado" value="caja" id="caja" />Caja
+      <input
+        type="radio"
+        name="estado"
+        value="soloCartucho"
+        id="soloCartucho"
+      />Solo Cartucho <br />
+    </form>
+    <input type="button" value="enviar" id="enviar" />
+  </body>
+</html>
