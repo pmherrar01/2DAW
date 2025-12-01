@@ -344,7 +344,7 @@ function pintarFrase(usuarios) {
 
   containerFrase.innerHTML = `
     <div class="card">
-    <p>Frase aleatoria : ${contenidoFrase}</p>
+    <p>Frase aleatori : ${contenidoFrase}</p>
     </div>
 `;
 }
