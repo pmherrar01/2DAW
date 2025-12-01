@@ -1,0 +1,66 @@
+/* 1. Estilos generales y del Título */
+body {
+    font-family: "Times New Roman", Times, serif; /* Tipografía clásica de la imagen */
+}
+
+h1 {
+    color: red;                 /* Texto rojo */
+    border-bottom: 5px solid red; /* La línea GRUESA roja justo debajo del texto */
+    margin-bottom: 20px;        /* Espacio hasta la línea gris */
+    width: 100%;
+}
+
+/* 2. El contenedor del formulario (.borderojo) */
+.borderojo {
+    /* Bordes laterales y superior: discontinuos rojos */
+    border-top: 2px dashed red;
+    border-left: 2px dashed red;
+    border-right: 2px dashed red;
+    
+    /* Borde INFERIOR: línea sólida y muy gruesa (clave en la imagen) */
+    border-bottom: 8px solid red;
+    
+    display: inline-block;      /* Para que la caja se ajuste al contenido */
+    padding: 10px;              /* Espacio interior */
+    background-color: white;    /* Fondo blanco según la captura */
+}
+
+/* 3. Estilos de la tabla y textos */
+.especial td {
+    color: red;                 /* Todo el texto de las etiquetas es ROJO */
+    vertical-align: top;        /* Alineación superior (para 'Descripción' y 'Posesiones') */
+    padding-bottom: 10px;
+    font-weight: normal;        /* En la imagen no se ve negrita fuerte, es normal */
+}
+
+/* 4. Inputs de texto y password */
+input[type="text"], 
+input[type="password"] {
+    border: 2px dashed red;     /* Borde discontinuo rojo */
+    padding: 3px;
+    width: 180px;
+    outline: none;              /* Quitar el borde azul por defecto al hacer clic */
+}
+
+/* 5. Área de texto (Textarea) */
+textarea {
+    border: 2px dashed red;     /* Borde discontinuo rojo */
+    color: green;               /* TEXTO VERDE (importante: 'Contenido inicial...') */
+    font-family: monospace;     /* Fuente tipo máquina de escribir */
+    font-size: 14px;
+    width: 200px;
+    height: 60px;
+    outline: none;
+}
+
+/* 6. Botones (Enviar y Vaciar) */
+input[type="submit"], 
+input[type="reset"] {
+    border: 2px dashed red;     /* Borde discontinuo rojo */
+    color: green;               /* Texto de los botones en VERDE */
+    background-color: #f0f0f0;  /* Fondo gris muy claro */
+    padding: 5px 15px;
+    font-size: 16px;            /* Texto un poco más grande */
+    cursor: pointer;
+    margin-right: 10px;         /* Separación entre botones */
+}

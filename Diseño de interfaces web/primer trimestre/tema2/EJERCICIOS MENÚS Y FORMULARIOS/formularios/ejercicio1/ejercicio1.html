@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aplicando estilos a formularios</title>
+    <link rel="stylesheet" href="estiloEjercicio1.css" type="text/css" />
+    <meta charset="“utf-8”" />
+  </head>
+  <body>
+    <!-- Aquí empieza la página -->
+    <h1>Estilos CSS para formularios</h1>
+    <hr />
+    <form
+      name="Formulario"
+      method="post"
+      action="dire_html02.html"
+      class="borderojo"
+      id="Formulario"
+    >
+      <table class="especial">
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input name="login" value="" type="text" /></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><input name="password" value="" type="password" /></td>
+          </tr>
+          <tr>
+            <td>Descripcion:</td>
+            <!-- Los campos de texto con más de una línea se hacen con TEXTAREA -->
+            <td>
+              <textarea name="descripcion">
+ Contenido inicial...
+</textarea
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Posesiones:</td>
+            <!-- Los checkbox se hacen con el tipo "checkbox" -->
+            <td>
+              <input name="posesion" value="Casa" type="checkbox" /> Casa<br />
+              <input name="posesion" value="Ordenador" type="checkbox" />
+              Ordenador<br />
+              <input name="posesion" value="Coche" type="checkbox" />
+              Coche<br />
+              <input name="posesion" value="Moto" type="checkbox" /> Moto<br />
+              <input name="posesion" value="Bicicleta" type="checkbox" />
+              Bicicleta<br />
+            </td>
+          </tr>
+          <tr>
+            <td>SEXO:</td>
+            <!-- Los radiobuttons se hacen con el tipo radio -->
+            <!-- Todos los elementos deben tener el mismo "name" -->
+            <td>
+              <input name="sexo" value="Male" type="radio" />Hombre<br />
+              <input name="sexo" value="Female" type="radio" />Mujer<br />
+            </td>
+          </tr>
+          <tr>
+            <!-- Al final siempre se meten los botones de envío y reset-->
+            <td><input name="boton_submit" value="Enviar" type="submit" /></td>
+            <td><input name="boton_vaciar" value="Vaciar" type="reset" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

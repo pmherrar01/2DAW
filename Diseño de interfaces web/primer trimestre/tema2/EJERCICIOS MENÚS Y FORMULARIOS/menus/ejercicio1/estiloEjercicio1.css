@@ -1,0 +1,48 @@
+
+#menu {
+    list-style: none;     
+    margin: 0;
+    padding: 0;
+    width: 200px;         
+}
+
+
+#menu li {
+    border: 1px solid black;      
+    background-color: lightgray;   
+    margin-right: 3px;            
+    position: relative;           
+}
+
+
+#menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px;
+}
+
+
+#menu li ul {
+    list-style: none;
+    visibility: hidden;    
+    display: none;         
+    margin: 0;
+    padding: 0;
+}
+
+#menu li:hover ul {
+    visibility: visible;  
+    display: block;       
+}
+
+
+#menu li ul li {
+    background-color: yellow;
+    width: 190px;            
+}
+
+
+#menu li ul li:hover {
+    background-color: orange;
+}
