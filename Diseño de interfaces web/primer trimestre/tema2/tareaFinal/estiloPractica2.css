@@ -1,0 +1,359 @@
+    /* -------------------------------------------------------------------------
+       VARIABLES CSS (Guide.png) - TEMA 2_7
+    ------------------------------------------------------------------------- */
+    :root {
+      --color-primary: #0065E0;   /* Azul Principal */
+      --color-hover: #2900E0;     /* Azul Oscuro Hover */
+      --color-secondary: #7400E0; /* Morado Secundario */
+      --color-support: #43BFE6;   /* Cyan Soporte */
+      --color-white: #FFFFFF;
+      --color-bg-card: #F6FBFF;   /* Blanco azulado */
+      --color-black: #000000;
+      --color-gray: #E0E0E0;      /* Gris para fondo About */
+      
+      --font-headline: 'Anton', sans-serif;
+      --font-subhead: 'Bebas Neue', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+      --font-alt: 'Open Sans', sans-serif;
+    }
+
+    /* -------------------------------------------------------------------------
+       RESET Y BASES (TEMA 2_2 y 2_6)
+    ------------------------------------------------------------------------- */
+    * {
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+
+    /* Utilidad Clearfix para limpiar floats */
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* -------------------------------------------------------------------------
+       HEADER (MENÚ) - TEMA 2_4 y 2_6
+       Posición absoluta para estar sobre la imagen principal.
+    ------------------------------------------------------------------------- */
+    header {
+      position: absolute; /* Flota sobre el Hero */
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 5%;
+      z-index: 100;
+      background: transparent;
+    }
+
+    .logo {
+      float: left;
+      font-family: var(--font-headline);
+      font-size: 48px;
+      color: var(--color-white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    nav {
+      float: right;
+      margin-top: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-white);
+      font-family: var(--font-alt);
+      font-size: 14px;
+      font-weight: 600;
+      margin-left: 25px;
+      padding-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    nav a:hover {
+      border-bottom-color: var(--color-support);
+    }
+
+    .nav-icons {
+      display: inline-block;
+      margin-left: 20px;
+      color: var(--color-white);
+      font-size: 18px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
+
+    /* -------------------------------------------------------------------------
+       HERO SECTION (HRR2025) - TEMA 2_4
+       Imagen urbana de fondo ocupando toda la pantalla.
+    ------------------------------------------------------------------------- */
+    .hero {
+      /* Imagen urbana que te gustó */
+      background-image: url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1920&auto=format&fit=crop');
+      background-size: cover;     
+      background-position: center;
+      height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+
+    /* Overlay oscuro */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.3);
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%); /* Centrado vertical */
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: var(--font-headline);
+      font-size: 120px;
+      color: var(--color-white);
+      margin: 0;
+      line-height: 0.9;
+      text-shadow: 4px 4px 10px rgba(0,0,0,0.7); 
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-subhead);
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-hover);
+      transform: scale(1.05);
+    }
+
+    /* -------------------------------------------------------------------------
+       COLECCIÓN - TEMA 2_6 (Inline-block)
+    ------------------------------------------------------------------------- */
+    .collection {
+      padding: 80px 20px;
+      text-align: center;
+      background-color: var(--color-white);
+    }
+
+    .collection h2 {
+      font-family: var(--font-subhead);
+      font-size: 60px;
+      margin-bottom: 50px;
+      color: var(--color-black);
+    }
+
+    .card {
+      display: inline-block;
+      width: 300px;
+      margin: 20px;
+      background-color: var(--color-bg-card);
+      border-radius: 12px;
+      padding-bottom: 20px;
+      vertical-align: top;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 350px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
+
+    .card h3 {
+      font-family: var(--font-subhead);
+      font-size: 32px;
+      margin: 20px 0 10px 0;
+      color: var(--color-black);
+    }
+
+    .btn-small {
+      padding: 10px 30px;
+      font-size: 20px;
+    }
+
+    /* -------------------------------------------------------------------------
+       SOBRE NOSOTROS - RESTAURADO (50% Texto / 50% Imagen)
+       Usamos 'float' para colocar una columna al lado de la otra.
+    ------------------------------------------------------------------------- */
+    .about {
+      width: 100%;
+      /* Clearfix para contener los floats hijos */
+      overflow: hidden; 
+    }
+
+    .about-text {
+      float: left;
+      width: 50%;
+      background-color: var(--color-gray); /* Fondo gris recuperado */
+      padding: 100px 60px;
+      min-height: 600px; /* Altura para igualar a la imagen */
+      display: flex; /* Centrado vertical del contenido */
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-img {
+      float: left;
+      width: 50%;
+      height: 600px; /* Misma altura que el texto */
+      /* Imagen del rack de ropa */
+      background-image: url('./img/s-o-c-i-a-l-c-u-t-Ts5lfuC7pDw-unsplash.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about h2 {
+      font-family: var(--font-subhead);
+      font-size: 60px;
+      margin-bottom: 30px;
+      color: var(--color-black);
+      text-transform: uppercase;
+    }
+
+    .about p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-black);
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    /* -------------------------------------------------------------------------
+       DESCUENTO
+    ------------------------------------------------------------------------- */
+    .discount {
+      background-color: var(--color-secondary);
+      padding: 80px 10%;
+      color: var(--color-white);
+    }
+
+    .discount-container {
+      overflow: hidden;
+    }
+
+    .discount-title {
+      float: left;
+      width: 45%;
+    }
+
+    .discount-title h2 {
+      font-family: var(--font-subhead);
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .discount-form {
+      float: right;
+      width: 50%;
+      text-align: right;
+      padding-top: 15px;
+    }
+
+    input[type="text"] {
+      padding: 15px 20px;
+      font-size: 16px;
+      font-family: var(--font-alt);
+      border: 2px solid transparent;
+      border-radius: 6px;
+      width: 60%;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--color-primary);
+    }
+
+    .btn-support {
+      background-color: var(--color-support);
+      color: var(--color-white);
+      margin-left: 10px;
+    }
+    
+    .btn-support:hover {
+      background-color: #2bb1dd;
+    }
+
+    /* -------------------------------------------------------------------------
+       FOOTER
+    ------------------------------------------------------------------------- */
+    footer {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .footer-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .footer-logo {
+      float: left;
+      font-family: var(--font-headline);
+      font-size: 40px;
+    }
+
+    .footer-links {
+      float: right;
+      padding-top: 10px;
+    }
+
+    .footer-links a {
+      color: var(--color-white);
+      text-decoration: none;
+      margin-left: 30px;
+      font-family: var(--font-alt);
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
