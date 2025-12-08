@@ -1,0 +1,21 @@
+tr:not(:first-child) td:first-child{
+    background-color: green;
+}
+
+tr:nth-child(4) td:nth-child(2){
+    text-align: center;
+    background-color: yellow;
+}
+
+tr td:last-child:hover{
+    font-size: 30px;
+}
+
+tr:first-of-type td::first-letter{
+    font-size: 2em;
+}
+
+label::after {
+    content: " *"; /* Añadimos el asterisco (con un espacio antes para que no se pegue) */
+    color: red;    /* Lo ponemos de color rojo */
+}
