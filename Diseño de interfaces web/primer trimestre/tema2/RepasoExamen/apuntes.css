@@ -1,0 +1,238 @@
+/* ==========================================================================
+   CHULETARIO DE SUPERVIVENCIA CSS - DAW
+   ========================================================================== */
+
+/* --- 0. RESET BÁSICO (Recomendado empezar así) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/* [cite: 826] Imprescindible: El padding y border no aumentan el ancho total */
+}
+
+/* ==========================================================================
+   1. [cite_start]SELECTORES (Cómo apuntar a los elementos) [cite: 657]
+   ========================================================================== */
+
+/* Selector Universal: Afecta a TODO */
+* { color: black; }
+
+/* Selector de Etiqueta */
+p { font-size: 16px; }
+
+/* Selector de Clase (empieza por punto) -> Para varios elementos iguales */
+.mi-clase { background-color: yellow; }
+
+/* Selector de ID (empieza por almohadilla) -> Para un elemento ÚNICO */
+#mi-id { border: 1px solid red; }
+
+/* Selector Descendiente (espacio): Todos los 'p' DENTRO de un 'div' */
+div p { color: blue; } 
+
+/* Selector de Hijo Directo (>): Solo los 'p' que son hijos INMEDIATOS de 'div' */
+div > p { color: green; }
+
+/* Selector Adyacente (+): El 'p' que va INMEDIATAMENTE después de un 'div' */
+div + p { margin-top: 20px; }
+
+/* Selector de Atributo: Ej. Inputs de tipo texto */
+input[type="text"] { background: #f0f0f0; }
+
+/* Agrupación: Aplicar lo mismo a varios */
+h1, h2, h3 { font-family: Arial, sans-serif; }
+
+
+/* ==========================================================================
+   2. [cite_start]PSEUDO-CLASES (Estados y Posiciones) [cite: 338]
+   ========================================================================== */
+
+/* -- Hijos y Posición -- */
+/* El primer hijo de su padre */
+li:first-child { font-weight: bold; } 
+
+/* El último hijo de su padre */
+li:last-child { border: none; } 
+
+/* El hijo número 'n' (ej: el 2º) */
+li:nth-child(2) { color: red; } 
+
+/* Pares (even) e Impares (odd) -> Típico para tablas rayadas */
+tr:nth-child(even) { background-color: #eee;} 
+tr:nth-child(odd)  { background-color: #fff; }
+
+/* Negación (:not) -> Todo lo que NO cumpla la condición */
+/* Ej: Todos los inputs menos el submit */
+input:not([type="submit"]) { width: 100%; } 
+
+[cite_start]/* -- Estados de Enlaces (Orden: LoVe HAte) [cite: 396] -- */
+a:link    { color: blue; text-decoration: none; } /* Normal */
+a:visited { color: purple; } /* Visitado */
+a:hover   { color: red; text-decoration: underline; } /* Ratón encima */
+a:active  { color: green; } /* Al hacer clic */
+
+
+/* ==========================================================================
+   3. [cite_start]PSEUDO-ELEMENTOS (Partes virtuales) [cite: 404]
+   ========================================================================== */
+
+/* Primera línea y Primera letra */
+p::first-line { font-variant: small-caps; }
+p::first-letter { font-size: 2em; float: left; } 
+
+/* Añadir contenido ANTES o DESPUÉS (Requiere 'content') */
+/* Ej: Poner un asterisco rojo después de un label obligatorio */
+label.obligatorio::after { 
+    content: " *"; 
+    color: red; 
+} 
+
+
+/* ==========================================================================
+   4. [cite_start]MODELO DE CAJAS (Box Model) [cite: 1155]
+   ========================================================================== */
+
+.caja {
+    /* -- Dimensiones -- */
+    width: 300px;        /* Ancho (puede ser %, px, em, vw) */
+    height: 200px;       /* Alto */
+    max-width: 100%;    /* [cite: 1309] Responsivo: nunca será más ancho que su padre */
+
+    /* -- Espaciados -- */
+    /* Margin: Espacio EXTERNO (fuera del borde) */
+    /* Truco: margin: 0 auto; CENTRA horizontalmente bloques con ancho fijo */
+    margin: 10px;           /* Los 4 lados */
+    margin: 10px 20px;      /* Arriba/Abajo 10px, Izq/Der 20px */
+    
+    /* Padding: Espacio INTERNO (entre borde y contenido) */
+    padding: 15px;
+
+    /* -- Borde -- */
+    /* Ancho | Estilo | Color */
+    border: 2px solid black;
+    border-radius: 10px;    /* Bordes redondeados */ 
+    
+    /* -- Sombras (Extra) -- */
+    /* Eje-X | Eje-Y | Difuminado | Color */
+    box-shadow: 5px 5px 10px gray;
+}
+
+
+/* ==========================================================================
+   5. [cite_start]TEXTO Y FUENTES [cite: 118, 164]
+   ========================================================================== */
+
+.texto {
+    /* -- Fuente -- */
+    font-family: Arial, Helvetica, sans-serif; /* Siempre terminar con genérica */
+    font-size: 16px;       /* Tamaño: px (fijo), em/rem (relativo) */
+    font-weight: bold;     /* Grosor: bold, normal, 100-900 */
+    font-style: italic;    /* Inclinación: italic (cursiva), normal */
+    font-variant: small-caps; /* Versalitas (mayúsculas pequeñas) */
+
+    /* -- Párrafo -- */
+    text-align: center;    /* left, right, center, justify */
+    text-decoration: underline; /* underline, overline, line-through, none */
+    text-transform: uppercase;  /* uppercase, lowercase, capitalize */
+    
+    /* -- Espaciados de texto -- */
+    line-height: 1.5;      /* Altura de línea (interlineado) */
+    letter-spacing: 2px;   /* Espacio entre letras */
+    word-spacing: 5px;     /* Espacio entre palabras */
+    text-indent: 20px;     /* Sangría primera línea */
+}
+
+
+/* ==========================================================================
+   6. [cite_start]FONDOS (Backgrounds) [cite: 113]
+   ========================================================================== */
+
+body {
+    background-color: #f0f0f0; /* Color sólido */
+    
+    /* Imagen de fondo */
+    background-image: url('imagen.jpg');
+    background-repeat: no-repeat; /* repeat, no-repeat, repeat-x, repeat-y */
+    background-position: center top; /* x y */
+    background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+    background-size: cover; /* [cite: 113] Ajusta imagen para cubrir todo sin deformar */
+}
+
+
+/* ==========================================================================
+   7. [cite_start]LISTAS Y MENÚS [cite: 197]
+   ========================================================================== */
+
+/* Quitar los puntos de la lista (Básico para menús) */
+ul {
+    list-style-type: none; /* none, disc, circle, square, decimal */
+}
+
+/* Hacer menú horizontal */
+ul li {
+    display: inline-block; /* Se ponen uno al lado del otro */
+    margin-right: 15px;
+}
+
+
+/* ==========================================================================
+   8. [cite_start]TABLAS [cite: 220]
+   ========================================================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* [cite: 228] FUNDAMENTAL: Quita el doble borde */
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Título de tabla */
+caption {
+    caption-side: top; /* top o bottom */
+    font-weight: bold;
+}
+
+
+/* ==========================================================================
+   9. [cite_start]POSICIONAMIENTO Y DISPLAY [cite: 1367]
+   ========================================================================== */
+
+/* -- Display (Comportamiento de caja) -- */
+.bloque { display: block; }   /* Ocupa todo el ancho (div, p, h1) */
+.linea  { display: inline; }  /* Ocupa solo lo necesario, no acepta width/height (span, a) */
+.ib     { display: inline-block; } /* En línea pero acepta medidas */
+.oculto { display: none; }    /* Desaparece por completo */
+.visible{ visibility: hidden; } /* Desaparece pero DEJA EL HUECO [cite: 1570] */
+
+/* -- Position (Mover cosas) -- */
+.relativo { 
+    position: relative; /* Se mueve respecto a su sitio original */
+    top: 10px; left: 10px;
+}
+
+.absoluto {
+    position: absolute; /* Se mueve respecto al primer padre 'relative' */
+    top: 0; right: 0;   /* Pegado a la esquina superior derecha */
+}
+
+.fijo {
+    position: fixed;    /* Pegado a la ventana del navegador (menús fijos) */
+    bottom: 0; width: 100%;
+}
+
+.sticky {
+    position: sticky;   /* Relativo hasta que haces scroll y se pega */
+    top: 0;
+}
+
+[cite_start]/* -- Float (Flotantes) [cite: 1505] -- */
+.flotar-izq { float: left; }
+.flotar-der { float: right; }
+
+/* Limpiar flotados (Para que el footer no suba) */
+.limpiar { clear: both; } 
+
+/* Capas (Z-Index) */
+.encima { z-index: 99; } /* Cuanto mayor el número, más arriba */

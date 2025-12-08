@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 99%;
+    height: 99%;
+}
+
+#cabecera{
+    background-color: red;
+    width: 99%;
+    height: 30%;
+}
+
+#lateral{
+    float: left;
+    background-color: yellow;
+    width: 20%;
+    height: 30%;
+
+}
+
+#principal{
+    background-color: gray;
+    float: left;
+    height: 40%;
+    width: 69%;
+
+}
+
+#pie{
+    margin-top: 10px;
+    background-color: cyan;
+    clear: both;
+    width: 99%;
+}
