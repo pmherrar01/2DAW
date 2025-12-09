@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <script src="js.js"></script>
+    <title>drag and drop</title>
+</head>
+
+<body>
+    <main>
+        <div id="oro" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
+        <div id="copas" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
+        <div id="espadas" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
+        <div id="bastos" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
+    </main>
+
+    <footer>
+        <img src="./img/asBastos.jpg" draggable="true" ondragstart="drag(event)" id="asBastos"> 
+        <img src="./img/asEspadas.jpg" draggable="true" ondragstart="drag(event)" id="asEspadas">
+        <img src="./img/asOro.jpg" draggable="true" ondragstart="drag(event)" id="asOro">
+        <img src="./img/copon.jpg" draggable="true" ondragstart="drag(event)" id="copon">
+        <img src="./img/dosCopas.jpg" draggable="true" ondragstart="drag(event)" id="dosCopas">
+        <img src="./img/dosEspada.jpg" draggable="true" ondragstart="drag(event)" id="dosEspada">
+        <img src="./img/reyBastos.jpg"draggable="true" ondragstart="drag(event)" id="reyBastos">
+        <img src="./img/seisEspadas.jpg" draggable="true" ondragstart="drag(event)" id="seisEspadas">
+        <img src="./img/sieteOros.jpg" draggable="true" ondragstart="drag(event)" id="sieteOros">
+        <img src="./img/tresCopas.jpg" draggable="true" ondragstart="drag(event)" id="tresCopas">
+    </footer>
+
+</body>
+
+</html>
