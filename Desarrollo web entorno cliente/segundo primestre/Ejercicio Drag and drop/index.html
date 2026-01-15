@@ -1,35 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <script src="js.js"></script>
-    <title>drag and drop</title>
+    <script type="module" src="js/js.js"></script>
+    <title>Clasifica la Baraja</title>
 </head>
-
 <body>
+    <h1>Clasifica las cartas por su Palo</h1>
+    
+    <div id="mensaje-resultado" class="mensaje"></div>
+
     <main>
-        <div id="oro" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
-        <div id="copas" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
-        <div id="espadas" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
-        <div id="bastos" ondrop="soltar(event)" ondragover="allowDrop(event)"></div>
+        <div class="category-box">
+            <h3>Oros</h3>
+            <div id="caja-oro" class="drop-zone" data-palo="oro"></div>
+        </div>
+
+        <div class="category-box">
+            <h3>Copas</h3>
+            <div id="caja-copas" class="drop-zone" data-palo="copas"></div>
+        </div>
+
+        <div class="category-box">
+            <h3>Espadas</h3>
+            <div id="caja-espadas" class="drop-zone" data-palo="espadas"></div>
+        </div>
+
+        <div class="category-box">
+            <h3>Bastos</h3>
+            <div id="caja-bastos" class="drop-zone" data-palo="bastos"></div>
+        </div>
     </main>
 
-    <footer>
-        <img src="./img/asBastos.jpg" draggable="true" ondragstart="drag(event)" id="asBastos"> 
-        <img src="./img/asEspadas.jpg" draggable="true" ondragstart="drag(event)" id="asEspadas">
-        <img src="./img/asOro.jpg" draggable="true" ondragstart="drag(event)" id="asOro">
-        <img src="./img/copon.jpg" draggable="true" ondragstart="drag(event)" id="copon">
-        <img src="./img/dosCopas.jpg" draggable="true" ondragstart="drag(event)" id="dosCopas">
-        <img src="./img/dosEspada.jpg" draggable="true" ondragstart="drag(event)" id="dosEspada">
-        <img src="./img/reyBastos.jpg"draggable="true" ondragstart="drag(event)" id="reyBastos">
-        <img src="./img/seisEspadas.jpg" draggable="true" ondragstart="drag(event)" id="seisEspadas">
-        <img src="./img/sieteOros.jpg" draggable="true" ondragstart="drag(event)" id="sieteOros">
-        <img src="./img/tresCopas.jpg" draggable="true" ondragstart="drag(event)" id="tresCopas">
+    <div class="controls">
+        <button id="btn-validar">Validar Resultado</button>
+        <button id="btn-reiniciar">Reiniciar</button>
+    </div>
+
+    <footer id="mazo-cartas">
+        <img src="./img/asBastos.jpg" draggable="true" class="carta" id="asBastos" data-palo="bastos"> 
+        <img src="./img/asEspadas.jpg" draggable="true" class="carta" id="asEspadas" data-palo="espadas">
+        <img src="./img/asOro.jpg" draggable="true" class="carta" id="asOro" data-palo="oro">
+        <img src="./img/copon.jpg" draggable="true" class="carta" id="copon" data-palo="copas">
+        <img src="./img/dosCopas.jpg" draggable="true" class="carta" id="dosCopas" data-palo="copas">
+        <img src="./img/dosEspada.jpg" draggable="true" class="carta" id="dosEspada" data-palo="espadas">
+        <img src="./img/reyBastos.jpg" draggable="true" class="carta" id="reyBastos" data-palo="bastos">
+        <img src="./img/seisEspadas.jpg" draggable="true" class="carta" id="seisEspadas" data-palo="espadas">
+        <img src="./img/sieteOros.jpg" draggable="true" class="carta" id="sieteOros" data-palo="oro">
+        <img src="./img/tresCopas.jpg" draggable="true" class="carta" id="tresCopas" data-palo="copas">
     </footer>
-
 </body>
-
 </html>
