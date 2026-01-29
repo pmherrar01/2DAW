@@ -11,7 +11,7 @@
 
         $conexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        echo "!Conexion realizada con exito¡";
+       // echo "!Conexion realizada con exito¡";
     } catch (PDOException $e) {
         echo "Error de conexion: " . $e->getMessage();
     }
