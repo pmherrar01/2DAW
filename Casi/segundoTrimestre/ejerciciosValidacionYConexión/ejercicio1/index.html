@@ -1,0 +1,30 @@
+<!--
+Nivel 1: Validación y Conexión
+Reto: Crea un formulario simple que pida un ID de pasajero y un Email.
+
+Valida que el ID sea un número entero positivo.
+
+Valida que el Email tenga un formato correcto.
+
+Si ambos son correctos, intenta conectar a la base de datos usando un bloque try-catch con PDO.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./agenciaVuelo.php" method="post">
+
+        <label for="idPasajero">ID Pasajero:</label>
+        <input type="text" name="idPasajero" id="idPasajero"><br>
+
+        <label for="correoPasajero">Correo:</label>
+        <input type="text" name="correoPasajero" id="correoPasajero"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
