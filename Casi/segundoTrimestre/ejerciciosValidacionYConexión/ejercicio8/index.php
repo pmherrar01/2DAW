@@ -23,7 +23,7 @@
     <form action="login.php" method="post">
         <label for="usuario">Usuario</label>
         <input type="text" name="usuario" id="usuario"><br> <br>
-        <label for="contrasena">Contraseña</label>
+        <label for="contrasena">Contraseña</labe l>
         <input type="password" name="contrasena" id="contrasena">
         <input type="submit">
         
