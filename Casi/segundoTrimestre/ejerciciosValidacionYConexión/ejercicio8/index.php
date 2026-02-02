@@ -7,6 +7,19 @@
 </head>
 <body>
     <h1>iniciar sesion</h1>
+
+    <?php
+
+    if (isset($_GET["userEncontrado"]) && $_GET["userEncontrado"] == "false" ) {
+        echo "<h2 style='color: red;font-weight: bold;'> Usuario no encontrado </h2>";
+    }
+
+    if (isset($_GET["passwordEncontrada"] ) && $_GET["passwordEncontrada"] == "false") {
+        echo "<h2 style='color: red;font-weight: bold;'> Contraseña no incorecta </h2>";
+    }
+
+    ?>
+
     <form action="login.php" method="post">
         <label for="usuario">Usuario</label>
         <input type="text" name="usuario" id="usuario"><br> <br>
