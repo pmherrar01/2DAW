@@ -15,7 +15,15 @@
     }
 
     if (isset($_GET["passwordEncontrada"] ) && $_GET["passwordEncontrada"] == "false") {
-        echo "<h2 style='color: red;font-weight: bold;'> Contraseña no incorecta </h2>";
+        echo "<h2 style='color: red;font-weight: bold;'> Contraseña incorecta </h2>";
+    }
+
+    if (isset($_GET["iniciado"]) && $_GET["iniciado"] == "false") {
+        echo "<h2 style='color: red; font-weight: bold;'>Inicia sesion primero!!</h2>";
+    }
+
+    if(isset($_GET["cerrar"]) && $_GET["cerrar"] == "true"){
+        echo "<h2 style='color: brown; font-weight: bold;'>Sesión cerrada</h2>";
     }
 
     ?>
