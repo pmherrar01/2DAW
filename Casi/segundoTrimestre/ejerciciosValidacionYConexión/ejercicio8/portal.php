@@ -20,6 +20,16 @@ if (!isset($_SESSION["user"])) {
 <body>
     <h1>Bienvenido  <?php echo $_SESSION["user"]; ?> </h1>
     
+<?php
+    if (
+        isset($_GET["passwordChange"]) && $_GET["passwordChange"]
+        == "true"
+    ) {
+        echo "<h2 style='color: green;font-weight: bold;'>Contraseña cambiada</h2>";
+    }; 
+?>
+    
+
     <a href="perfil.php">Perfil</a>
     
 </body>

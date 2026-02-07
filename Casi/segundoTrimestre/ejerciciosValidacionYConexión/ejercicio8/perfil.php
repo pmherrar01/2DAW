@@ -3,7 +3,8 @@
 session_start();
 
 if (isset($_SESSION["user"])) {
-};
+}
+;
 
 
 
@@ -17,7 +18,7 @@ if (isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
     <style>
-        table{
+        table {
             padding: 10px;
             border-radius: 10px;
             margin: 0 auto;
@@ -29,6 +30,17 @@ if (isset($_SESSION["user"])) {
 
     <h1> <?= $_SESSION["user"] ?> </h1>
     <p>Usuario conectado: <strong><?php echo $_SESSION['user']; ?></strong></p>
+
+    <?php
+    if (
+       isset($_GET["passwordChange"]) && $_GET["passwordChange"]
+        == "false"
+    ) {
+        echo "<h2 style='color: red;font-weight: bold;'>Contrasaña erronea</h2>";
+    };
+
+?>
+
 
     <table border="1px">
         <tr>

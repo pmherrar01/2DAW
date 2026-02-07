@@ -1,3 +1,40 @@
+<!-- 
+ 🗑️ Misión: Eliminar la cuenta de usuario
+
+El objetivo es poner un botón en el portal que, al pulsarlo, borre al usuario de la base de datos y lo eche de la web.
+
+Necesitamos dos pasos.
+
+Paso 1: El Botón de autodestrucción (portal.php)
+
+Esto es fácil. En tu portal.php, añade un enlace (o un botón dentro de un formulario) que diga "Darse de baja" o "Eliminar cuenta". Este enlace debe apuntar a un archivo nuevo: baja.php.
+
+Paso 2: El archivo ejecutor (baja.php)
+
+Este archivo es una mezcla entre tu portal.php (necesita seguridad) y tu logout.php (necesita cerrar sesión).
+
+Tu algoritmo a programar:
+
+Inicio: Arranca la sesión y conéctate a la base de datos.
+
+Seguridad: (Opcional pero recomendable) Verifica que hay alguien logueado.
+
+Recuperar ID: Coge el nombre del usuario de la variable $_SESSION['usuario'] (o como la llamaras al final).
+
+La Sentencia de Muerte (SQL):
+
+Prepara una sentencia SQL usando el verbo DELETE.
+
+La frase es: DELETE FROM usuario WHERE username = :usu
+
+Ejecútala pasando el parámetro del usuario.
+
+Limpieza: Una vez borrado de la base de datos, el usuario ya no existe, así que tienes que destruir su sesión manualmente (igual que hiciste en logout.php). Si no lo haces, se quedará logueado como un fantasma.
+
+Adiós: Redirige a index.html.
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
