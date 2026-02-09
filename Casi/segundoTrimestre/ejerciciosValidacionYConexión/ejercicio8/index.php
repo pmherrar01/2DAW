@@ -63,12 +63,16 @@ Adiós: Redirige a index.html.
         echo "<h2 style='color: brown; font-weight: bold;'>Sesión cerrada</h2>";
     }
 
+        if (isset($_GET["baja"]) && $_GET["baja"] == "true") {
+        echo "<h2 style='color: red;font-weight: bold;'> Sesion borrada </h2>";
+    }
+
     ?>
 
     <form action="login.php" method="post">
         <label for="usuario">Usuario</label>
         <input type="text" name="usuario" id="usuario"><br> <br>
-        <label for="contrasena">Contraseña</labe l>
+        <label for="contrasena">Contraseña</label>
         <input type="password" name="contrasena" id="contrasena">
         <input type="submit">
         

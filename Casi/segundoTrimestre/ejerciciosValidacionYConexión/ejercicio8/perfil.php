@@ -2,9 +2,10 @@
 
 session_start();
 
-if (isset($_SESSION["user"])) {
+if (!isset($_SESSION["user"])) { // Fíjate en el signo !
+    header("Location: index.php?iniciado=false");
+    exit;
 }
-;
 
 
 
