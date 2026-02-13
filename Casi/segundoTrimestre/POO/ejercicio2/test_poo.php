@@ -3,23 +3,28 @@
 require_once "dataBase.php";
 require_once "user.php";
 
-$dataBase = new Database();
+$db = new DataBase();
 
-$conexion = $dataBase->conectar();
+$conexion = $db->conectar();
+
+$user = new Usuario($conexion);
+
 
 if($conexion){
-    $user = new Usuario($conexion);
 
-    $user->setUserName("Usuario POO2");
-    $user->setPassword("12345");
-    if($user->registrar()){
-        echo "Insertado corectamente";
+    $user -> setUserName("pruebapoo2");
+    $user  -> setPassword("pruebapoo2");
+
+    if($user->login()){
+        echo "Bienvenido de nuevo, tu id es: " . $user->getId() . " y tu rol es: " . $user->getIdRol();
     }else{
-        echo "Error no se a podido insertar";
+        echo "Error a intentar iniciar sesion";
     }
+    
 
 }else{
-    echo "conexion fallida";
+    echo $e;
 }
+
 
 ?>
