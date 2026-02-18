@@ -18,6 +18,7 @@ class DataBase{
             $pdo = new PDO($dns, $this->user, $this->password);
 
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
 
         } catch (PDOException $e) {
             echo $e->getMessage();
