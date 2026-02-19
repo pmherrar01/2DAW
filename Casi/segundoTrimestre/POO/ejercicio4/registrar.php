@@ -6,23 +6,25 @@
     <title>Document</title>
 </head>
 <body>
+
+<h1>Registrar</h1>
+
 <h2 style='color: red;font-weight: bold;'>
     <?php 
-    if(isset($_GET["error"]) && $_GET["error"] == "true"){
-         echo " Usuario no encontrado";
-         } 
-    
+    if(isset($_GET["registro"]) && $_GET["registro"] == "false"){
+        echo "Registro fallido intentelo de nuevo";
+    }
     ?>
 
 </h2>
 
-    <form action="validarLogin.php" method="post">
+    <form action="procesarRegistro.php" method="post">
         <label for="nombre usuario">Nombre Usuario</label>
         <input type="text" name="nombreUsuario"><br><br>
                 <label for="contrasena">Contraseña</label>
         <input type="password" name="password"><br><br>
 
-        <button type="submit">Entrar</button>
+        <button type="submit">Registrarte</button>
         
     </form>
 </body>

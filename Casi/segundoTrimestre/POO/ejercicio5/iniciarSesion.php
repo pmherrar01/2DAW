@@ -6,11 +6,18 @@
     <title>Document</title>
 </head>
 <body>
+
+<h1>Iniciar sesion</h1>
+
 <h2 style='color: red;font-weight: bold;'>
     <?php 
-    if(isset($_GET["error"]) && $_GET["error"] == "true"){
+    if(isset($_GET["encontrado"]) && $_GET["encontrado"] == "false"){
          echo " Usuario no encontrado";
-         } 
+         }
+         
+         if(isset($_GET["registro"]) && $_GET["registro"] == "true"){
+            echo "Usuario Registrado Corectamente, ahora deves iniciar sesion";
+         }
     
     ?>
 
