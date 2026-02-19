@@ -19,7 +19,7 @@ if (!empty($nameNewUser) && !empty($passwordNewUser)) {
     if ($newUser->registrar()) {
         $_SESSION["user"] = [
             "idUsuario" => $newUser->getIdUsuario(),
-            "nombreUser" => $newUser->getUserName(),
+            "nombreUser" => $newUser->getNameUser(),
             "rol" => $newUser->getIdRol()
         ];
 

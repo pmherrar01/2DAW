@@ -12,7 +12,7 @@ class User
 
     public function __construct($db)
     {
-        $this->conexionDataBase;
+        $this->conexionDataBase = $db;
     }
 
 
@@ -102,7 +102,7 @@ class User
         $sql = "SELECT * from usuario where username= :usu";
 
         $sentencia = $this->conexionDataBase->prepare($sql);
-        $sentencia->execute([":usu"  => $this->userName]);
+        $sentencia->execute([":usu"  => $this->nameUser]);
 
         $datosUsuario = $sentencia->fetch(PDO::FETCH_ASSOC);
 
@@ -122,7 +122,7 @@ class User
         $sql = "INSERT INTO usuario(username, password, id_rol) VALUES (:usu, :pass, :idRol)";
         $sentencia = $this->conexionDataBase->prepare($sql);
         $sentencia->execute([
-            ":usu"  => $this->userName,
+            ":usu"  => $this->nameUser,
             ":pass" => password_hash($this->password, PASSWORD_DEFAULT),
             ":idRol" => $this->idRol
         ]);
