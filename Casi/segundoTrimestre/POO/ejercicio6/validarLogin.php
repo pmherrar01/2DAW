@@ -13,7 +13,7 @@ $userLogin = new User($db->conectar());
 
 if(!empty($nameLogin) && !empty($password)){
 
-$userLogin->setNameUser($nameLogin);
+$userLogin->setUserName($nameLogin);
 $userLogin->setPassword($password);
 
 if($userLogin->login()){

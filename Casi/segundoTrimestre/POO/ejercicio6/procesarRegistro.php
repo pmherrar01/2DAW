@@ -5,20 +5,20 @@ session_start();
 require_once "user.php";
 require_once "dataBase.php";
 
-$newUserName= isset($_POST["nombreUsuario"]) ? $_POST["nombreUsuario"] : "";
+$newUserName = isset($_POST["nombreUsuario"]) ? $_POST["nombreUsuario"] : "";
 $newPassword = isset($_POST["password"]) ? $_POST["password"] : "";
 
 $db = new DataBase();
 $newUser =  new User($db->conectar());
 
-if(!empty($newUserName) && !empty($newPassword)){
+if (!empty($newUserName) && !empty($newPassword)) {
     $newUser->setUserName($newUserName);
     $newUser->setPassword($newPassword);
 
-    if($newUser->registrar()){
-         $_SESSION["user"] = [
-            "idUsuario" => $newUser->getIdUsuario(),
-            "nombreUser" => $newUser->getNameUser(),
+    if ($newUser->registrar()) {
+        $_SESSION["user"] = [
+            "idUsuario" => $newUser->getIdUser(),
+            "nombreUser" => $newUser->getUserName(),
             "rol" => $newUser->getIdRol()
         ];
 
@@ -29,5 +29,3 @@ if(!empty($newUserName) && !empty($newPassword)){
     header("Location: registar.php?registro=false");
     exit;
 }
-
-?>

@@ -7,7 +7,7 @@ if(!isset($_SESSION["user"])){
     exit;
 }
 
-$usuarioLogeado = $_SESSION["usuario"];
+$usuarioLogeado = $_SESSION["user"];
 
 ?>
 

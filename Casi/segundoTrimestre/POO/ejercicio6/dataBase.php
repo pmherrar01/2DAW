@@ -14,7 +14,7 @@ class DataBase{
     
     try {
 
-    $dns = "mysql:host=" . $this->host . ";dbname=" . $this->dbName . ";charset:" . $this->charset;
+    $dns = "mysql:host=" . $this->host . ";dbname=" . $this->dbName . ";charset=" . $this->charset;
     $pdo = new PDO($dns, $this->user, $this->password);
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
