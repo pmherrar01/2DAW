@@ -26,6 +26,6 @@ if (!empty($newUserName) && !empty($newPassword)) {
         exit;
     }
 
-    header("Location: registar.php?registro=false");
+    header("Location: registrar.php?registro=false");
     exit;
 }

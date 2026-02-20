@@ -28,7 +28,7 @@ if($userLogin->login()){
 
 }
 
-header("Location: iniciarSesion.php?encotnrado=false");
+header("Location: iniciarSesion.php?encontrado=false");
 exit;
 
 }

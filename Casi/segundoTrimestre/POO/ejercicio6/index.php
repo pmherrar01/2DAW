@@ -27,8 +27,7 @@
     <table border="solid 1px">
         <tr>
             <td><a href="iniciarSesion.php">Iniciar sesion</a> </td>
-            <td><a href="registrar.php">Registrar</a></td>
-            
+            <td><a href="registrar.php">Registrar</a></td>          
         </tr>
     </table>
 </body>

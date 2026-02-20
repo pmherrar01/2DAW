@@ -4,7 +4,7 @@ session_start();
 
 session_destroy();
 
-header("Location: Index.php?cerrada=true");
+header("Location: index.php?cerrada=true");
 exit;
 
 ?>
