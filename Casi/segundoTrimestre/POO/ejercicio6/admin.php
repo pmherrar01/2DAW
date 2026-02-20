@@ -21,10 +21,29 @@ $adminUser = new User($db->conectar());
 
 $listaUsuarios = $adminUser->obtenerTodosUsuarios();
 
+$mensajeBorrado = "";
+$mensajeCambioRol = "";
+$mensajeCambioPass = "";
+
 if (isset($_GET["borrado"]) && $_GET["borrado"] == "true") {
     $mensajeBorrado = "Usuario borrado correctamente";
 }
 
+if (isset($_GET["cambioRol"]) && $_GET["cambioRol"] == "true") {
+    $mensajeCambioRol = "Cambio de rol realizado correctamente";
+}
+
+
+if (isset($_GET["cambioRol"]) && $_GET["cambioRol"] == "false") {
+    $mensajeCambioRol = "Error al cambiar el rol";
+}
+
+if (isset($_GET["cambioPass"]) && $_GET["cambioPass"] == "false") {
+    $mensajeCambioPass = "Error al cambiar la contraseña";
+}
+if (isset($_GET["cambioPass"]) && $_GET["cambioPass"] == "true") {
+    $mensajeCambioPass = "Contraseña cambiada";
+}
 
 ?>
 
@@ -38,14 +57,17 @@ if (isset($_GET["borrado"]) && $_GET["borrado"] == "true") {
 </head>
 
 <body>
-    <h1>👑 Bienvenido al Panel de Control Supremo, Administrador</h1>
+    <h1>👑 Bienvenido al Panel de Control Supremo, <?php echo $_SESSION["user"]["nombreUser"] ?></h1>
     <p>Solo los usuarios con rol 1 pueden leer este mensaje secreto.</p>
 
     <a href="inicio.php">Volver a Inicio</a>
 
     <h2>Lista de Usuarios Registrados</h2>
 
-    <h2 style="color: green;"> <? echo $mensajeBorrado ?></h2>
+    <h2 style="color: green;"> <?php echo $mensajeBorrado ?></h2>
+
+    <h2 style="color: green;"> <?php echo $mensajeCambioRol  ?> </h2>
+        <h2 style="color: green;"> <?php echo $mensajeCambioPass  ?> </h2>
 
     <table border="1" cellpadding="10">
         <thead>
@@ -69,7 +91,7 @@ if (isset($_GET["borrado"]) && $_GET["borrado"] == "true") {
                     $mensajeRol = "Usuario Normal";
                 }
                 echo "<td>" . $mensajeRol . "</td>";
-                echo "<td> <a href='borrarUsuario.php?idUsu=" . $usuario["id_usuario"] . "'>Borrar usuario</a> <br> <a href='editarUsuario.php?idUsu=" . $usuario["id_usuario"] . "'>Editar usuario</a> </td>";
+                echo "<td> <a href='gestionarUsuario.php?idUsu=" . $usuario["id_usuario"] . "&idRol=" . $usuario["id_rol"] .  "'>Gestionar usuario</a> </td>";
                 echo "</tr>";
             }
             ?>

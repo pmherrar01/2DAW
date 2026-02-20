@@ -164,13 +164,13 @@ class User
         $sentencia = $this->conexionDataBase->prepare($sql);
         $sentencia->execute([":id" => $id]);
 
-        return $sentencia->fecth(PDO::FETCH_ASSOC);
+        return $sentencia->fectch(PDO::FETCH_ASSOC);
     }
 
     public function editarUsuario($id, $rol)
     {
 
-        $rolNew = 2;
+        $rolNew = 2; 
 
         if ($rol == 2) {
             $rolNew = 1;
