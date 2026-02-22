@@ -28,6 +28,9 @@ $mensajeCambioPass = "";
 if (isset($_GET["borrado"]) && $_GET["borrado"] == "true") {
     $mensajeBorrado = "Usuario borrado correctamente";
 }
+if (isset($_GET["borrado"]) && $_GET["borrado"] == "false") {
+    $mensajeBorrado = "Fallo al borrar el usuario";
+}
 
 if (isset($_GET["cambioRol"]) && $_GET["cambioRol"] == "true") {
     $mensajeCambioRol = "Cambio de rol realizado correctamente";

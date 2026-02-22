@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <form action="" method="POST">
+    <form action="gestion.php?accion" method="POST">
         <label for="">Contraseña nueva:</label>
         <input type="password" name="contrasenaNueva"><br>
         <button type="submit">Cambiar</button>
