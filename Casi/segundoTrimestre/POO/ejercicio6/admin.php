@@ -15,15 +15,20 @@ if ($_SESSION["user"]["rol"] != 1) {
 
 require_once "user.php";
 require_once "dataBase.php";
+require_once "vuelo.php";
 
 $db = new DataBase();
 $adminUser = new User($db->conectar());
+$vuelo = new Vuelo($db->conectar());
 
 $listaUsuarios = $adminUser->obtenerTodosUsuarios();
+$listaVuelos = $vuelo->obtenerVuelos();
+$listaCiudades = $vuelo->obtenerCiudades();
 
 $mensajeBorrado = "";
 $mensajeCambioRol = "";
 $mensajeCambioPass = "";
+$mensajeVuelo = "";
 
 if (isset($_GET["borrado"]) && $_GET["borrado"] == "true") {
     $mensajeBorrado = "Usuario borrado correctamente";
@@ -48,6 +53,14 @@ if (isset($_GET["cambioPass"]) && $_GET["cambioPass"] == "true") {
     $mensajeCambioPass = "Contraseña cambiada";
 }
 
+if (isset($_GET["anadirVuelo"]) && $_GET["anadirVuelo"] == "true") {
+    $mensajeVuelo = "vuelo añadido";
+}
+
+if (isset($_GET["anadirVuelo"]) && $_GET["anadirVuelo"] == "false") {
+    $mensajeVuelo = "El vuelo no se a podido añadir";
+}
+
 ?>
 
 
@@ -70,7 +83,7 @@ if (isset($_GET["cambioPass"]) && $_GET["cambioPass"] == "true") {
     <h2 style="color: green;"> <?php echo $mensajeBorrado ?></h2>
 
     <h2 style="color: green;"> <?php echo $mensajeCambioRol  ?> </h2>
-        <h2 style="color: green;"> <?php echo $mensajeCambioPass  ?> </h2>
+    <h2 style="color: green;"> <?php echo $mensajeCambioPass  ?> </h2>
 
     <table border="1" cellpadding="10">
         <thead>
@@ -101,9 +114,79 @@ if (isset($_GET["cambioPass"]) && $_GET["cambioPass"] == "true") {
 
 
 
-
         </tbody>
+
+
     </table>
+    <br><br>
+    <hr>
+
+
+
+    <h2>Lista de vuelos</h2>
+
+        <h2 style="color: green;"> <?php echo $mensajeVuelo  ?> </h2>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <th>ID Vuelo</th>
+            <th>Fecha vuelo</th>
+            <th>Numero de plazas</th>
+            <th>Ciudad Origen</th>
+            <th>Ciudad destino</th>
+
+        </thead>
+        <tbody>
+            <?php
+            foreach ($listaVuelos as $vuelo) {
+                echo "<tr>";
+                echo "<td>" . $vuelo["id_vuelo"] . "</td>";
+                echo "<td>" . $vuelo["fecha_vuelo"] . "</td>";
+                echo "<td>" . $vuelo["n_plazas"] . "</td>";
+                echo "<td>" . $vuelo["ciudad_origen"] . "</td>";
+                echo "<td>" . $vuelo["ciudad_destino"] . "</td>";
+
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+
+    </table>
+
+    <br><br>
+
+    <h2>✈️ Añadir Nuevo Vuelo</h2>
+
+<form action="gestion.php?accion=nuevoVuelo" method="POST">
+    
+    <label for="nPlazas">Número de Plazas:</label>
+    <input type="number" name="nPlazas" min="1" required><br><br>
+
+    <label for="fechaVuelo">Fecha del Vuelo:</label>
+    <input type="date" name="fechaVuelo" required><br><br>
+
+    <label for="idCiudadOrigen">Ciudad de Origen:</label>
+    <select name="idCiudadOrigen" required>
+        <option value="">-- Selecciona Origen --</option>
+        <?php
+        foreach ($listaCiudades as $ciudad) {
+            echo "<option value='" . $ciudad["id_ciudad"] . "'>" . $ciudad["nombre"] . "</option>";
+        }
+        ?>
+    </select><br><br>
+
+    <label for="idCiudadDestino">Ciudad de Destino:</label>
+    <select name="idCiudadDestino" required>
+        <option value="">-- Selecciona Destino --</option>
+        <?php
+        foreach ($listaCiudades as $ciudad) {
+            echo "<option value='" . $ciudad["id_ciudad"] . "'>" . $ciudad["nombre"] . "</option>";
+        }
+        ?>
+    </select><br><br>
+
+    <button type="submit">Programar Vuelo</button>
+</form>
 </body>
 
 </html>

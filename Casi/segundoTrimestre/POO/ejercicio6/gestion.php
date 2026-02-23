@@ -16,14 +16,20 @@ if ($_SESSION["user"]["rol"] != 1) {
 
 require_once "user.php";
 require_once "dataBase.php";
+require_once "vuelo.php";
 
 $db = new DataBase();
 $user = new User($db->conectar());
+$vuelo = new Vuelo($db->conectar());
 
 $accion = isset($_GET["accion"]) ? $_GET["accion"] : "";
 
 $id = isset($_GET["idUsu"]) ? $_GET["idUsu"] : 0;
 $idRol = isset($_GET["idRol"]) ? $_GET["idRol"] : 0;
+$fechaVuelo = isset($_POST["fechaVuelo"]) ? $_POST["fechaVuelo"] : "";
+$numPlazas = isset($_POST["nPlazas"]) ? $_POST["nPlazas"] : 0;
+$idCiudadOrigen = isset($_POST["idCiudadOrigen"]) ? $_POST["idCiudadOrigen"] : 0;
+$idCiudadDestino = isset($_POST["idCiudadDestino"]) ? $_POST["idCiudadDestino"] : 0;
 
 switch ($accion) {
     case 'cambiarRol':
@@ -66,6 +72,28 @@ switch ($accion) {
             }
         }
         header("Location: admin.php?cambioPass=false");
+        exit;
+
+    case 'nuevoVuelo':
+        if (!empty($fechaVuelo) && $fechaVuelo != "" && !empty($numPlazas) && $numPlazas != 0 && !empty($idCiudadOrigen) && $idCiudadOrigen != 0 && !empty($idCiudadDestino) && $idCiudadDestino != 0) {
+
+        $vuelo->setNPlazas($numPlazas);
+            $vuelo->setFechaVuelo($fechaVuelo);
+            $vuelo->setIdCiudadOrigen($idCiudadOrigen);
+            $vuelo->setIdCiudadDestino($idCiudadDestino);
+
+            if ($vuelo->crearVuelo()) {
+                header("Location: admin.php?anadirVuelo=true");
+                exit;
+            } else {
+                header("Location: admin.php?anadirVuelo=false");
+                exit;
+            }
+        } else {
+            header("Location: admin.php?anadirVuelo=false");
+            
+            exit;
+        }
         exit;
     default:
         header("Location: index.php?error=true");
