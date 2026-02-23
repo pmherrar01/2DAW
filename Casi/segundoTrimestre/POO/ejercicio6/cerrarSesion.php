@@ -2,9 +2,9 @@
 
 session_start();
 
-session_destroy();
+        session_destroy();
 
-header("Location: index.php?cerrada=true");
-exit;
+        header("Location: index.php?cerrada=true");
+        exit;
 
 ?>

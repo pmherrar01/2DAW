@@ -25,9 +25,6 @@ $accion = isset($_GET["accion"]) ? $_GET["accion"] : "";
 $id = isset($_GET["idUsu"]) ? $_GET["idUsu"] : 0;
 $idRol = isset($_GET["idRol"]) ? $_GET["idRol"] : 0;
 
-
-
-
 switch ($accion) {
     case 'cambiarRol':
         if (!empty($id) && $id != 0 && !empty($idRol) && $idRol != 0) {
@@ -70,7 +67,6 @@ switch ($accion) {
         }
         header("Location: admin.php?cambioPass=false");
         exit;
-
     default:
         header("Location: index.php?error=true");
         exit;
