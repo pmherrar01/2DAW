@@ -136,7 +136,7 @@ class User
 
     public function obtenerTodosUsuarios()
     {
-        $sql = "SELECT id_usuario, username, id_rol FROM usuario";
+        $sql = "SELECT id_usuario, username, id_rol FROM usuario where activo = 1";
 
         $sentencia = $this->conexionDataBase->prepare($sql);
         $sentencia->execute();
@@ -147,7 +147,7 @@ class User
     {
 
         try {
-            $sql = "DELETE FROM usuario where id_usuario = :idUsu";
+            $sql = "UPDATE usuario SET activo = 0 where id_usuario = :idUsu";
 
             $sentencia = $this->conexionDataBase->prepare($sql);
             $sentencia->execute([":idUsu" => $id]);
@@ -160,11 +160,11 @@ class User
 
     public function buscarUsuario($id)
     {
-        $sql = "SELECT * from usuario where id_usuario = :id";
+        $sql = "SELECT * from usuario where id_usuario = :id  ";
         $sentencia = $this->conexionDataBase->prepare($sql);
         $sentencia->execute([":id" => $id]);
 
-        return $sentencia->fectch(PDO::FETCH_ASSOC);
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
 
     public function editarUsuario($id, $rol)

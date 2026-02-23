@@ -12,27 +12,10 @@ if ($_SESSION["user"]["rol"] != 1) {
     exit;
 }
 
-require_once "user.php";
-require_once "dataBase.php";
+$idUsu = isset($_GET["idUsu"]) ? $_GET["idUsu"] : 0;
 
-$db = new DataBase();
-$userChangePass = new User($db->conectar());
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $idUserChangePass = isset($_GET["idUsu"]) ? $_GET["idUsu"] : 0;
-    $pass = isset($_POST["contrasenaNueva"]) ? $_POST["contrasenaNueva"] : 0;
-
-    if (!empty($idUserChangePass) && $idUserChangePass != 0) {
-        if ($userChangePass->actualizarContrasena($idUserChangePass, $pass)) {
-        header("Location: admin.php?cambioPass=true");    
-        exit;
-        };
-    }else{
-        header("Location: admin.php?cambioPass=false");
-        exit;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <form action="gestion.php?accion" method="POST">
+    <form action="gestion.php?accion=cambiarPass" method="POST">
         <label for="">Contraseña nueva:</label>
         <input type="password" name="contrasenaNueva"><br>
+        <input type="hidden" name="idUsu" value="<?php echo $idUsu ?>">
         <button type="submit">Cambiar</button>
     </form>
 </body>

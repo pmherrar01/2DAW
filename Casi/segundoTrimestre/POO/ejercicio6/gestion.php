@@ -23,13 +23,14 @@ $user = new User($db->conectar());
 $accion = isset($_GET["accion"]) ? $_GET["accion"] : "";
 
 $id = isset($_GET["idUsu"]) ? $_GET["idUsu"] : 0;
-$idRol = isset($_GET[""]) ? $_GET[""] : 0;
+$idRol = isset($_GET["idRol"]) ? $_GET["idRol"] : 0;
 
 
 
-if (!empty($id) && $id != 0 && !empty($idRol) && $idRol != 0) {
-    switch ($accion) {
-        case 'cambiarRol':
+
+switch ($accion) {
+    case 'cambiarRol':
+        if (!empty($id) && $id != 0 && !empty($idRol) && $idRol != 0) {
             if ($user->editarUsuario($id, $idRol)) {
                 header("Location: admin.php?cambioRol=true");
                 exit;
@@ -37,7 +38,12 @@ if (!empty($id) && $id != 0 && !empty($idRol) && $idRol != 0) {
                 header("Location: admin.php?cambioRol=false");
                 exit;
             }
-        case 'borrar':
+        } else {
+            header("Location: admin.php?cambioRol=false");
+            exit;
+        }
+    case 'borrar':
+        if (!empty($id) && $id != 0) {
             if ($user->borrarUsuario($id)) {
                 header("Location: admin.php?borrado=true");
                 exit;
@@ -45,13 +51,27 @@ if (!empty($id) && $id != 0 && !empty($idRol) && $idRol != 0) {
                 header("Location: admin.php?borrado=false");
                 exit;
             }
-        case 'cambiarPass':
+        } else {
+            header("Location: admin.php?borrado=false");
             exit;
+        }
+    case 'cambiarPass':
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $contrasenaNueva = $_POST["contrasenaNueva"];
+            $idUsuContrasenaNueva = $_POST["idUsu"];
 
-        default:
-            header("Location: index.php?error=true");
-            exit;
-    }
+            if ($user->actualizarContrasena($idUsuContrasenaNueva, $contrasenaNueva)) {
+                header("Location: admin.php?cambioPass=true");
+                exit;
+            } else {
+                header("Location: admin.php?cambioPass=false");
+                exit;
+            }
+        }
+        header("Location: admin.php?cambioPass=false");
+        exit;
+
+    default:
+        header("Location: index.php?error=true");
+        exit;
 }
-
-

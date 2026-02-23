@@ -19,6 +19,6 @@ $idRol = isset($_GET["idRol"]) ? $_GET["idRol"] : 0;
     <h1>Que deseas hacer?</h1>
     <h2> <?php echo " <a href='gestion.php?accion=borrar&idUsu=" . $idUsuario . "'>Borrar Usuario</a>" ?></h2>
     <h2> <?php echo " <a href='gestion.php?accion=cambiarRol&idUsu=" . $idUsuario . "&idRol=" . $idRol . "'>Cambiar Rol</a>" ?></h2>
-        <h2> <?php echo " <a href='gestion.php?accion=cambiarPass&idUsu=" . $idUsuario . "'>Cambiar contraseña</a>" ?></h2>
+        <h2> <?php echo " <a href='cambiarPassword.php?accion=cambiarPass&idUsu=" . $idUsuario . "'>Cambiar contraseña</a>" ?></h2>
 </body>
 </html>
