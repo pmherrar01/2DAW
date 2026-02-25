@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'includes/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<div style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+    <p class="text-muted">Aquí irá el contenido...</p>
+</div>
 
-<body>
-    <h1>prueba de tfg</h1>
-    
-</body>
-
-</html>
+<?php include 'includes/footer.php'; ?>

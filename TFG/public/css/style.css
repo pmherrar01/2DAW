@@ -1,0 +1,48 @@
+:root {
+    /* TUS COLORES DE MARCA */
+    --color-principal: #4A3B32;  
+    --color-secundario: #f4f4f4; 
+    --color-acento: #b93632;     
+    --color-detalle: #e6e2ddb5;  
+    --color-blanco: #ffffff;
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+}
+
+/* --- HEADER  --- */
+.navbar-custom {
+    background-color: var(--color-principal) !important; 
+    border-bottom: none; 
+}
+
+.navbar-brand, 
+.nav-link, 
+.bi {
+    color: var(--color-secundario) !important; 
+}
+
+
+.nav-link:hover, 
+.bi:hover {
+    color: var(--color-detalle) !important; 
+    opacity: 1; 
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--color-principal); 
+    color: var(--color-detalle); 
+}
+
+footer a {
+    color: var(--color-detalle);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--color-acento); 
+}
