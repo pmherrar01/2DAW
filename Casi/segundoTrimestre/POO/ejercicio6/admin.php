@@ -134,17 +134,42 @@ if (isset($_GET["anadirVuelo"]) && $_GET["anadirVuelo"] == "false") {
             <th>Numero de plazas</th>
             <th>Ciudad Origen</th>
             <th>Ciudad destino</th>
+            <th>Fotos</th>
 
         </thead>
         <tbody>
             <?php
-            foreach ($listaVuelos as $vuelo) {
+            // IMPORTANTE: Aquí usamos $datosVuelo para no machacar tu objeto $vuelo
+            foreach ($listaVuelos as $datosVuelo) {
                 echo "<tr>";
-                echo "<td>" . $vuelo["id_vuelo"] . "</td>";
-                echo "<td>" . $vuelo["fecha_vuelo"] . "</td>";
-                echo "<td>" . $vuelo["n_plazas"] . "</td>";
-                echo "<td>" . $vuelo["ciudad_origen"] . "</td>";
-                echo "<td>" . $vuelo["ciudad_destino"] . "</td>";
+                
+                // Las columnas normales
+                echo "<td>" . $datosVuelo["id_vuelo"] . "</td>";
+                echo "<td>" . $datosVuelo["fecha_vuelo"] . "</td>";
+                echo "<td>" . $datosVuelo["n_plazas"] . "</td>";
+                echo "<td>" . $datosVuelo["ciudad_origen"] . "</td>";
+                echo "<td>" . $datosVuelo["ciudad_destino"] . "</td>";
+                
+                // --- COLUMNA DE FOTOS Y BOTÓN ---
+                echo "<td>";
+                
+                // 1. Pintamos las fotos que ya tenga
+                $imagenes = $vuelo->obtenerImagenes($datosVuelo["id_vuelo"]);
+                
+                if (count($imagenes) > 0) {
+                    foreach($imagenes as $img) {
+                        echo "<img src='" . $img["ruta_imagen"] . "' width='50' style='margin-right: 5px; border: 1px solid #ccc;'>";
+                    }
+                } else {
+                    echo "Sin fotos";
+                }
+
+                // 2. AQUÍ VA EL BOTÓN QUE ME PREGUNTABAS (Dentro del TD y dentro del FOREACH)
+                echo "<br><br>";
+                echo "<a href='gestionarFotos.php?idVuelo=" . $datosVuelo["id_vuelo"] . "'>📷 Gestionar Fotos</a>";
+                
+                echo "</td>"; 
+                // --------------------------------
 
                 echo "</tr>";
             }
@@ -157,7 +182,7 @@ if (isset($_GET["anadirVuelo"]) && $_GET["anadirVuelo"] == "false") {
 
     <h2>✈️ Añadir Nuevo Vuelo</h2>
 
-<form action="gestion.php?accion=nuevoVuelo" method="POST">
+<form action="gestion.php?accion=nuevoVuelo" method="POST" enctype="multipart/form-data">
     
     <label for="nPlazas">Número de Plazas:</label>
     <input type="number" name="nPlazas" min="1" required><br><br>
@@ -184,6 +209,9 @@ if (isset($_GET["anadirVuelo"]) && $_GET["anadirVuelo"] == "false") {
         }
         ?>
     </select><br><br>
+
+    <label for="imagenes">Imágenes del vuelo:</label>
+    <input type="file" name="imagenes[]" multiple accept="image/*"><br><br>
 
     <button type="submit">Programar Vuelo</button>
 </form>

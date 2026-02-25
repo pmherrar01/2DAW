@@ -116,11 +116,10 @@ class Vuelo
         return $this;
     }
 
-    public function crearVuelo()
-    {
-
+public function crearVuelo() {
         try {
-            $sql = "INSERT INTO vuelo(n_plazas, id_ciudaddestino, id_ciudadorigen, fecha_vuelo) VALUES (:numPlazas, :idCiudadDestino, :idCiudadOrigen, :fechaVuelo)";
+            $sql = "INSERT INTO vuelo(n_plazas, id_ciudaddestino, id_ciudadorigen, fecha_vuelo) 
+                    VALUES (:numPlazas, :idCiudadDestino, :idCiudadOrigen, :fechaVuelo)";
 
             $sentencia = $this->conexionDataBase->prepare($sql);
             $sentencia->execute([
@@ -129,9 +128,37 @@ class Vuelo
                 ":idCiudadDestino" => $this->idCiudadDestino,
                 ":fechaVuelo" => $this->fechaVuelo
             ]);
-            return true;
-        } catch (PDOException) {
+            
+            // ¡IMPORTANTE! Devolvemos el ID del vuelo recién creado
+            return $this->conexionDataBase->lastInsertId(); 
+            
+        } catch (PDOException $e) {
             return false;
+        }
+    }
+
+    public function guardarImagen($idVuelo, $ruta) {
+        try {
+            $sql = "INSERT INTO imagenes_vuelo (id_vuelo, ruta_imagen) VALUES (:idVuelo, :ruta)";
+            $sentencia = $this->conexionDataBase->prepare($sql);
+            $sentencia->execute([
+                ":idVuelo" => $idVuelo,
+                ":ruta" => $ruta
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function obtenerImagenes($idVuelo) {
+        try {
+            $sql = "SELECT ruta_imagen FROM imagenes_vuelo WHERE id_vuelo = :id";
+            $sentencia = $this->conexionDataBase->prepare($sql);
+            $sentencia->execute([":id" => $idVuelo]);
+            return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
         }
     }
 

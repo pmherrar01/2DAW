@@ -77,24 +77,82 @@ switch ($accion) {
     case 'nuevoVuelo':
         if (!empty($fechaVuelo) && $fechaVuelo != "" && !empty($numPlazas) && $numPlazas != 0 && !empty($idCiudadOrigen) && $idCiudadOrigen != 0 && !empty($idCiudadDestino) && $idCiudadDestino != 0) {
 
-        $vuelo->setNPlazas($numPlazas);
+// Seteamos los datos
+            $vuelo->setNPlazas($numPlazas);
             $vuelo->setFechaVuelo($fechaVuelo);
             $vuelo->setIdCiudadOrigen($idCiudadOrigen);
             $vuelo->setIdCiudadDestino($idCiudadDestino);
 
-            if ($vuelo->crearVuelo()) {
+            // 1. Creamos el vuelo y recuperamos su ID
+            $idVueloCreado = $vuelo->crearVuelo();
+
+            if ($idVueloCreado) {
+                // 2. Si el vuelo se creó, vamos a procesar las imágenes
+                
+                // Verificamos si se han subido imágenes (el input tiene algo)
+                if (isset($_FILES['imagenes']) && !empty($_FILES['imagenes']['name'][0])) {
+                    
+                    $cantidadImagenes = count($_FILES['imagenes']['name']);
+
+                    for ($i = 0; $i < $cantidadImagenes; $i++) {
+                        
+                        $nombreArchivo = $_FILES['imagenes']['name'][$i];
+                        $tipoArchivo = $_FILES['imagenes']['type'][$i];
+                        $rutaTemporal = $_FILES['imagenes']['tmp_name'][$i];
+                        
+                        // Generamos un nombre único para que no se sobrescriban (ej: vuelo_15_foto.jpg)
+                        $rutaDestino = "uploads/" . time() . "_" . $nombreArchivo;
+
+                        // Movemos el archivo de la carpeta temporal a nuestra carpeta 'uploads'
+                        if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
+                            // Si se movió bien, guardamos la ruta en la BD
+                            $vuelo->guardarImagen($idVueloCreado, $rutaDestino);
+                        }
+                    }
+                }
+
                 header("Location: admin.php?anadirVuelo=true");
                 exit;
             } else {
                 header("Location: admin.php?anadirVuelo=false");
                 exit;
             }
-        } else {
-            header("Location: admin.php?anadirVuelo=false");
-            
-            exit;
         }
         exit;
+
+        case 'subirFotosExistentes':
+        // 1. Recogemos el ID del vuelo (viene oculto en el formulario)
+        $idVuelo = isset($_POST["idVuelo"]) ? $_POST["idVuelo"] : 0;
+
+        if ($idVuelo != 0 && isset($_FILES['imagenes'])) {
+            
+            // 2. Bucle para procesar las imágenes (Igual que antes)
+            $cantidadImagenes = count($_FILES['imagenes']['name']);
+
+            for ($i = 0; $i < $cantidadImagenes; $i++) {
+                $nombreArchivo = $_FILES['imagenes']['name'][$i];
+                $rutaTemporal = $_FILES['imagenes']['tmp_name'][$i];
+
+                if ($nombreArchivo != "") {
+                    // Nombre único
+                    $rutaDestino = "uploads/" . time() . "_" . $nombreArchivo;
+
+                    // Movemos el archivo
+                    if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
+                        // Guardamos en la BD usando el ID que nos llegó del formulario
+                        $vuelo->guardarImagen($idVuelo, $rutaDestino);
+                    }
+                }
+            }
+            
+            // 3. Volvemos a la página de gestionar fotos para ver el resultado
+            header("Location: gestionarFotos.php?idVuelo=" . $idVuelo);
+            exit;
+        }
+        
+        header("Location: admin.php");
+        exit;
+
     default:
         header("Location: index.php?error=true");
         exit;
