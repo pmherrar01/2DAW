@@ -13,17 +13,26 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-  <div class="container-fluid px-4 px-lg-5">
+  <div class="container-fluid px-4 px-lg-5 position-relative">
     
     <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
       <span class="bi bi-list fs-3"></span>
     </button>
 
-    <a class="navbar-brand mx-auto fw-bold fs-4 text-uppercase ls-2" href="index.php">
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#">New Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Hombre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Mujer</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="#">Rebajas</a></li>
+      </ul>
+    </div>
+
+    <a class="navbar-brand position-absolute top-50 start-50 translate-middle m-0 fw-bold fs-4 text-uppercase ls-2" href="index.php">
         HERROR
     </a>
 
-    <div class="d-flex gap-3 align-items-center order-lg-last">
+    <div class="d-flex gap-3 align-items-center order-lg-last ms-auto">
         <a href="#" class="text-reset"><i class="bi bi-search"></i></a>
         <a href="#" class="text-reset"><i class="bi bi-person"></i></a>
         <a href="#" class="text-reset position-relative">
@@ -32,13 +41,5 @@
         </a>
     </div>
 
-    <div class="collapse navbar-collapse" id="menuPrincipal">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#">Accesorios</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Hombre</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Mujer</a></li>
-        <li class="nav-item"><a class="nav-link text-danger" href="#">Rebajas</a></li>
-      </ul>
-    </div>
   </div>
 </nav>
