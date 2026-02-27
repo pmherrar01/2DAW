@@ -1,4 +1,16 @@
-<?php include 'includes/header.php'; ?>
+<?php
+
+// Recuerda: si en Linux tu archivo se llama "Producto.php", aquí tiene que ser con mayúscula también.
+require_once "./models/producto.php"; 
+require_once "./config/db.php";
+
+$db = new Database();
+$producto = new Producto($db->conectar());
+
+$novedades = $producto->listarProductos(8);
+
+include './includes/header.php';
+?>
 
 <section class="hero-section d-flex align-items-center justify-content-center text-center">
     <div class="hero-content">
@@ -12,87 +24,48 @@
 
     <div id="carruselNovedades" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-pause="hover">
         <div class="carousel-inner px-5">
-            <div class="carousel-item active" data-bs-interval="3000">
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 1"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Camiseta Oversize Negra</h5>
-                                <p class="card-text">25.99 €</p>
+            
+            <?php 
+            if (!empty($novedades)) {
+                $contador = 0; 
+                foreach ($novedades as $prenda) {
+                    
+                    if ($contador % 4 == 0) { 
+                        $claseActive = ($contador == 0) ? 'active' : '';
+            ?>
+                        <div class="carousel-item <?= $claseActive ?>" data-bs-interval="3000">
+                            <div class="row">
+            <?php 
+                    } // Cierra el if ($contador % 4 == 0) de apertura
+            ?>
+                                <div class="col-6 col-md-3">
+                                    <div class="card product-card border-0 bg-transparent">
+                                        <div class="img-wrapper">
+                                            <img src="<?= $prenda['url_imagen'] ?>" class="card-img-top" alt="<?= $prenda['nombre'] ?>">
+                                        </div>
+                                        <div class="card-body text-center px-0">
+                                            <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1"><?= $prenda['nombre'] ?></h5>
+                                            <p class="card-text"><?= $prenda['precio'] ?> €</p>
+                                        </div>
+                                    </div>
+                                </div>
+            <?php 
+                    $contador++; 
+                    if ($contador % 4 == 0 || $contador == count($novedades)) { 
+            ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 2"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Hoodie Essential</h5>
-                                <p class="card-text">49.99 €</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 3"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Pantalón Cargo</h5>
-                                <p class="card-text">39.99 €</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 4"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Gorra Logo</h5>
-                                <p class="card-text">19.99 €</p>
-                            </div>
-                        </div>
-                    </div>
+            <?php 
+                    } // Cierra el if de cierre de diapositiva
+                } // Cierra el foreach
+            } else { 
+            ?>
+                <div class="text-center py-5">
+                    <p class="text-muted">Próximamente nuevas prendas...</p>
                 </div>
-            </div>
-
-            <div class="carousel-item" data-bs-interval="3000">
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 5"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Sudadera Zip</h5>
-                                <p class="card-text">55.00 €</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 6"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Camiseta Basic</h5>
-                                <p class="card-text">20.00 €</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 7"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Tote Bag</h5>
-                                <p class="card-text">15.00 €</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card product-card border-0 bg-transparent">
-                            <div class="img-wrapper"><img src="public/img/camiseta1.jpg" class="card-img-top" alt="Prenda 8"></div>
-                            <div class="card-body text-center px-0">
-                                <h5 class="card-title text-uppercase fw-bold fs-6 mt-2 mb-1">Calcetines Crew</h5>
-                                <p class="card-text">9.99 €</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php 
+            } // Cierra el else principal
+            ?>
 
         </div>
 
@@ -140,11 +113,11 @@
             <div class="col-md-8 col-lg-6">
                 <form action="#" method="POST" class="newsletter-form d-flex align-items-center justify-content-center flex-wrap gap-3">
                     <input type="email" class="form-control newsletter-input flex-grow-1" placeholder="TU CORREO ELECTRÓNICO" required>
-                    <button type="submit" class="btn btn-newsletter">Suscribirse</button>
+                    <button type="submit" class="btn btn-newsletter">Subcribete</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
 
-<?php include 'includes/footer.php'; ?>
+<?php include './includes/footer.php'; ?>
