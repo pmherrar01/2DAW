@@ -12,6 +12,7 @@ $idPrenda = isset($_GET["idPrenda"]) ? $_GET["idPrenda"] : 0;
 
 $datosPrenda = $producto->obtenerProducto($idPrenda);
 $galeria = $imagen->listarImagenes($idPrenda);
+$listaTallas = $producto->obtenerTallas($idPrenda);
 
 include './includes/header.php';
 
@@ -25,17 +26,18 @@ include './includes/header.php';
                 <div class="carousel-inner">
                     
                     <?php 
-                    // ¡AQUÍ VA TU MAGIA PHP! 
-                    // Tienes que hacer un foreach de tu array $galeria.
-                    // RECUERDA: La primera foto tiene que llevar la clase "active", las demás no.
+
+                    foreach ($galeria as $img) {
+                    
+
                     ?>
                     
                     <div class="carousel-item active">
-                        <img src="AQUI_LA_URL_DE_LA_IMAGEN" class="d-block w-100" alt="AQUI_EL_NOMBRE_DE_LA_PRENDA" style="object-fit: cover; aspect-ratio: 3/4;">
+                        <img src="<?php $img["url_imagen"] ?>" class="d-block w-100" alt="AQUI_EL_NOMBRE_DE_LA_PRENDA" style="object-fit: cover; aspect-ratio: 3/4;">
                     </div>
                     
                     <?php 
-                    // Fin de tu bucle
+                    }
                     ?>
 
                 </div>
@@ -53,7 +55,7 @@ include './includes/header.php';
 
         <div class="col-md-6 ps-md-5 d-flex flex-column justify-content-center">
             
-            <h1 class="display-5 fw-bold text-uppercase mb-2">AQUI_EL_NOMBRE</h1>
+            <h1 class="display-5 fw-bold text-uppercase mb-2"><?php $datosPrenda["nombre"] ?> </h1>
             <p class="fs-3 fw-light mb-4">AQUI_EL_PRECIO €</p>
 
             <div class="mb-5">
@@ -70,10 +72,16 @@ include './includes/header.php';
                     </div>
                     <select class="form-select border-dark rounded-0 py-2" id="talla" name="talla" required>
                         <option value="" selected disabled>Selecciona tu talla</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
+                       <?php
+
+                        foreach ($listaTallas as $talla ) {
+
+                        
+
+                          //  echo " <option value=" . $talla . ">S</option>";
+                        }
+
+                       ?>
                     </select>
                 </div>
 

@@ -222,6 +222,15 @@ class Producto
         return $this;
     }
 
+    public function obtenerTallas($idPrenda){
+        $sql = "SELECT talla, stock FROM producto_tallas WHERE producto_id = :idPrenda";
+
+        $sentencia = $this->conexionDataBase->prepare($sql);
+        $sentencia->execute([":idPrenda" => $idPrenda]);
+
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function listarProductos($limite = null)
     {
