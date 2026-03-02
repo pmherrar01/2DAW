@@ -241,4 +241,16 @@ class Producto
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
+
+        public function obtenerProducto($id)
+    {
+        $sql = "SELECT * FROM productos
+                WHERE id = :idPrenda";
+
+
+        $sentencia = $this->conexionDataBase->prepare($sql);
+        $sentencia->execute([":idPrenda" => $id]);
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

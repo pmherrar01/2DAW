@@ -13,6 +13,11 @@ body {
   color: var(--color-principal);
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 /* --- HEADER  --- */
 .navbar-custom {
   background-color: var(--color-principal) !important;
@@ -21,12 +26,12 @@ body {
 
 .navbar-brand,
 .nav-link,
-.bi {
+.navbar-custom .bi {
   color: var(--color-secundario) !important;
 }
 
 .nav-link:hover,
-.bi:hover {
+.navbar-custom .bi:hover {
   color: var(--color-detalle) !important;
   opacity: 1;
 }
@@ -127,29 +132,55 @@ footer a:hover {
   }
 }
 
-/* --- TARJETAS DE PRODUCTO (CARRUSEL) --- */
+/* --- TARJETAS DE PRODUCTO (CARRUSEL Y CATÁLOGO) --- */
 .product-card {
   cursor: pointer;
   color: var(--color-principal);
 }
 
 .product-card .img-wrapper {
-  overflow: hidden; /* Esto esconde la foto si se hace más grande que la caja */
-  background-color: #ebebeb; /* Un fondo gris clarito por si la foto tiene transparencias */
+  overflow: hidden; 
+  background-color: #ebebeb; 
+  position: relative; /* ¡Corregido! Tiene que ser relative, no absolute */
 }
 
-.product-card img {
-  transition: transform 0.6s ease; /* Transición súper suave */
-  border-radius: 0; /* Streetwear suele usar bordes rectos, muy limpios */
+/* Configuramos la foto principal */
+.product-card .img-principal {
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  border-radius: 0;
 }
 
-.product-card:hover img {
-  transform: scale(1.05); /* Efecto zoom sutil al pasar el ratón */
+/* Configuramos la foto secundaria (oculta por defecto) */
+.product-card .img-hover {
+  opacity: 0; /* Invisible al principio */
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  border-radius: 0;
+  object-fit: cover; /* Para que no se deforme */
 }
 
-.product-card .card-text {
+/* LA MAGIA AL PASAR EL RATÓN */
+.product-card:hover .img-principal {
+  opacity: 0; /* Ocultamos la principal */
+}
+
+.product-card:hover .img-hover {
+  opacity: 1; /* Mostramos la secundaria */
+  transform: scale(1.05); /* Zoom sutil a la segunda foto */
+}
+
+.btn-favorito {
+  background-color: transparent;
+  border: none;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-favorito i {
+  font-size: 1.8rem; /* Cambia este número para hacerlo más grande o pequeño */
   color: var(--color-principal);
-  opacity: 0.8;
 }
 
 /* --- CONTROLES DEL CARRUSEL --- */
@@ -295,3 +326,7 @@ footer a:hover {
   background-color: transparent;
   color: var(--color-secundario);
 }
+
+
+
+
